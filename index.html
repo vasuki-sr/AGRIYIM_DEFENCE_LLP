@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agriyim Defence LLP</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#0f2027;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* NAVBAR */
+.navbar{
+    position:fixed;
+    top:0;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 80px;
+    backdrop-filter:blur(12px);
+    background:rgba(0,0,0,0.4);
+    border-bottom:1px solid rgba(255,255,255,0.2);
+    z-index:1000;
+    animation:slideDown 1s ease;
+}
+
+@keyframes slideDown{
+    from{transform:translateY(-100%);}
+    to{transform:translateY(0);}
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-weight:600;
+}
+
+.logo img{
+    width:85px;
+}
+
+.logo-text{
+    line-height:1.2;
+}
+
+.nav-links{
+    list-style:none;
+    display:flex;
+    gap:35px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#1ac4c4;
+    font-weight:500;
+    transition:0.4s;
+    position:relative;
+}
+
+.nav-links a:hover{
+    color:#00f2ff;
+    text-shadow:0 0 10px #00f2ff;
+}
+
+.nav-links a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-5px;
+    width:0%;
+    height:2px;
+    background:linear-gradient(90deg,#00f2ff,#ff00c8);
+    transition:0.4s;
+}
+
+.nav-links a:hover::after{
+    width:100%;
+}
+
+.menu-toggle{
+    display:none;
+    flex-direction:column;
+    cursor:pointer;
+}
+
+.menu-toggle span{
+    width:25px;
+    height:3px;
+    background:white;
+    margin:4px 0;
+}
+
+/* HERO SECTION */
+.hero{
+    position:relative;
+    height:100vh;
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    overflow:hidden;
+}
+
+.hero video{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:-2;
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.6);
+    z-index:-1;
+}
+
+.hero-content{
+    animation:fadeUp 2s ease;
+}
+
+@keyframes fadeUp{
+    from{opacity:0; transform:translateY(40px);} 
+    to{opacity:1; transform:translateY(0);} 
+}
+
+.hero h1{
+    font-size:55px;
+    background:linear-gradient(90deg,#00f2ff,#ff00c8);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    margin-top:20px;
+    font-size:18px;
+    color:#ddd;
+}
+
+.hero button{
+    margin-top:30px;
+    padding:12px 30px;
+    border:none;
+    border-radius:30px;
+    background:linear-gradient(90deg,#00f2ff,#ff00c8);
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.4s;
+}
+
+.hero button:hover{
+    transform:scale(1.1);
+}
+
+/* SECTION */
+/* Global Section Styling */
+    .section {
+        padding: 80px 10% !important;
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeInUp 1s ease forwards;
+    }
+
+    /* Keyframe Animations */
+    @keyframes fadeInUp {
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes glow {
+        0%, 100% { box-shadow: 0 0 20px rgba(58, 96, 115, 0.3); }
+        50% { box-shadow: 0 0 40px rgba(58, 96, 115, 0.6); }
+    }
+
+    /* Service Card Hover Effects */
+    .service-card {
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .service-card:hover {
+        transform: translateY(-15px) scale(1.03);
+        background: rgba(255, 255, 255, 0.1) !important;
+        border-color: #3A6073;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+    }
+
+    /* Image Pulse Effect */
+    .animated-img {
+        animation: glow 4s infinite ease-in-out;
+        transition: transform 0.5s ease;
+    }
+    
+    .animated-img:hover {
+        transform: scale(1.02) rotate(1deg);
+    }
+
+    /* Text Underline Animation */
+    .section-title::after {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 4px;
+        background: #3A6073;
+        margin-top: 10px;
+        transition: width 0.3s ease;
+    }
+    
+    .section:hover .section-title::after {
+        width: 120px;
+    }
+
+/* Responsive */
+@media(max-width:768px){
+    .navbar{
+        padding:15px 30px;
+    }
+    .nav-links{
+        position:absolute;
+        top:100%;
+        right:0;
+        width:100%;
+        background:black;
+        flex-direction:column;
+        align-items:center;
+        gap:25px;
+        padding:30px 0;
+        display:none;
+    }
+    .nav-links.active{
+        display:flex;
+    }
+    .menu-toggle{
+        display:flex;
+    }
+    .hero h1{
+        font-size:32px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<nav class="navbar">
+    <div class="logo">
+        <img src="images/logo_img.png" alt="Logo">
+        <div class="logo-text">AGRIYIM<br>DEFENCE LLP</div>
+    </div>
+
+    <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="products.html">Products & Services</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="career.html">Career</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+
+    <div class="menu-toggle" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</nav>
+
+<!-- HERO WITH BACKGROUND VIDEO -->
+<section class="hero">
+    <video autoplay muted loop>
+        <source src="images/background-video.mp4" type="video/mp4">
+    </video>
+    <div class="hero-content">
+        <h1>Innovating Defence Technology</h1>
+        <p>Advanced Security Solutions • Strategic Engineering • Future Ready Systems</p>
+        <button>Explore More</button>
+    </div>
+</section>
+
+<section class="section" id="about" style="background: #0f172a; color: white;">
+    <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:60px;">
+        <div style="flex:1; min-width:320px; position: relative;">
+            <img src="images/about.jpg" alt="About Image" class="animated-img" 
+                 style="height:450px; width:100%; object-fit: cover; border-radius:30px; box-shadow:0 25px 50px rgba(0,0,0,0.6);">
+        </div>
+        <div style="flex:1; min-width:320px; text-align:left;">
+            <h2 class="section-title" style="font-size:42px; margin-bottom:25px; letter-spacing: 1px;">About Agriyim Defence LLP</h2>
+            <p style="line-height:1.8; color:#cbd5e1; margin-bottom:20px; font-size: 17px;">
+                Agriyim Defence LLP is committed to delivering <strong>next-generation</strong> defence technologies and advanced security systems. 
+                Our organization focuses on research-driven innovation, precision engineering, and mission-critical reliability.
+            </p>
+            <p style="line-height:1.8; color:#94a3b8; font-size: 17px;">
+                With a strong foundation in strategic defence solutions, we integrate cutting-edge technology with operational excellence 
+                to support national security and global defence modernization initiatives.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="section" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); text-align: center; border-top: 1px solid rgba(255,255,255,0.05);">
+    <div style="max-width: 1000px; margin: auto;">
+        <h2 class="section-title" style="display: inline-block; margin-bottom: 20px;">Our Mission</h2>
+        <p style="line-height:1.9; color:#cbd5e1; font-size: 18px; margin-bottom: 50px; font-style: italic;">
+            "To design and develop innovative, secure, and future-ready defence systems that enhance operational capability, safety, 
+            and technological advancement for strategic forces."
+        </p>
+
+        <h2 class="section-title" style="display: inline-block; margin-bottom: 20px;">Our Vision</h2>
+        <p style="line-height:1.9; color:#cbd5e1; font-size: 18px;">
+            "To become a globally recognized leader in defence innovation by delivering excellence, integrity, and sustainable 
+            technological growth."
+        </p>
+    </div>
+</section>
+
+<section class="section" id="services" style="background: #0f172a; text-align: center;">
+    <h2 class="section-title" style="display: inline-block; margin-bottom: 50px;">Core Capabilities</h2>
+    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:30px;">
+        
+        <div class="service-card" style="flex:1; min-width:280px; background:rgba(255,255,255,0.03); padding:40px 30px; border-radius:24px; backdrop-filter:blur(12px);">
+            <div style="font-size: 40px; margin-bottom: 20px;">⚙️</div>
+            <h3 style="margin-bottom:15px; color: #fff;">Advanced Engineering</h3>
+            <p style="color:#94a3b8; line-height: 1.6;">High-performance defence components designed with surgical precision and battlefield reliability.</p>
+        </div>
+
+        <div class="service-card" style="flex:1; min-width:280px; background:rgba(255,255,255,0.03); padding:40px 30px; border-radius:24px; backdrop-filter:blur(12px);">
+            <div style="font-size: 40px; margin-bottom: 20px;">🛡️</div>
+            <h3 style="margin-bottom:15px; color: #fff;">Strategic Systems</h3>
+            <p style="color:#94a3b8; line-height: 1.6;">Integrated tactical solutions supporting real-time surveillance, protection, and mission logistics.</p>
+        </div>
+
+        <div class="service-card" style="flex:1; min-width:280px; background:rgba(255,255,255,0.03); padding:40px 30px; border-radius:24px; backdrop-filter:blur(12px);">
+            <div style="font-size: 40px; margin-bottom: 20px;">🚀</div>
+            <h3 style="margin-bottom:15px; color: #fff;">Research & Innovation</h3>
+            <p style="color:#94a3b8; line-height: 1.6;">Pioneering R&D initiatives focused on AI-driven defense and next-gen material science.</p>
+        </div>
+
+    </div>
+</section>
+<style>
+    /* FOOTER STYLING */
+    footer {
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(15px);
+        padding: 80px 10% 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        position: relative;
+    }
+
+    .footer-container {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1.5fr;
+        gap: 50px;
+        margin-bottom: 50px;
+    }
+
+    .footer-col h3 {
+        color: #00f2ff;
+        font-size: 1.2rem;
+        margin-bottom: 25px;
+        position: relative;
+    }
+
+    .footer-col h3::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -8px;
+        width: 40px;
+        height: 2px;
+        background: #ff00c8;
+    }
+
+    .footer-col p {
+        color: #ccc;
+        font-size: 0.9rem;
+        line-height: 1.8;
+    }
+
+    .footer-links {
+        list-style: none;
+    }
+
+    .footer-links li {
+        margin-bottom: 12px;
+    }
+
+    .footer-links a {
+        color: #ccc;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: 0.3s;
+    }
+
+    .footer-links a:hover {
+        color: #00f2ff;
+        padding-left: 5px;
+    }
+
+    .social-icons {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .social-icons a {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.05);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-decoration: none;
+        transition: 0.3s;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .social-icons a:hover {
+        background: #00f2ff;
+        color: #000;
+        transform: translateY(-5px);
+    }
+
+    .newsletter input {
+        width: 100%;
+        padding: 12px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: white;
+        border-radius: 5px;
+        outline: none;
+        margin-bottom: 10px;
+    }
+
+    .footer-bottom {
+        text-align: center;
+        padding-top: 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        color: #777;
+        font-size: 0.8rem;
+    }
+
+    @media (max-width: 992px) {
+        .footer-container { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 600px) {
+        .footer-container { grid-template-columns: 1fr; }
+        footer { padding: 60px 5% 30px; }
+    }
+</style>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-col" data-aos="fade-up">
+            <div class="logo" style="margin-bottom: 20px;">
+                <img src="images/logo_img.png" alt="Logo" style="width: 70px;">
+                <div class="logo-text" style="color: white; font-weight: 600;">AGRIYIM<br>DEFENCE LLP</div>
+            </div>
+            <p>Bridging the gap between operational needs and indigenous manufacturing execution. Pioneering the next generation of RIBs and Unmanned Systems for a secure nation.</p>
+        </div>
+
+        <div class="footer-col" data-aos="fade-up" data-aos-delay="100">
+            <h3>Explore</h3>
+            <ul class="footer-links">
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="products.html">Our Solutions</a></li>
+                <li><a href="projects.html">Key Projects</a></li>
+                <li><a href="career.html">Join the Team</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col" data-aos="fade-up" data-aos-delay="200">
+            <h3>Contact</h3>
+            <ul class="footer-links">
+                <li><a href="mailto:info@agriyim.com">info@agriyim.com</a></li>
+                <li style="color: #ccc;">+91-XXXXXXXXXX</li>
+                <li style="color: #ccc;">India</li>
+            </ul>
+        </div>
+
+        <div class="footer-col" data-aos="fade-up" data-aos-delay="300">
+            <h3>Updates</h3>
+            <p style="margin-bottom: 15px;">Subscribe to receive our latest project updates.</p>
+            <form class="newsletter">
+                <input type="email" placeholder="Email Address">
+                <button type="submit" class="apply-btn" style="width: 100%; padding: 10px; background: transparent; cursor: pointer;">Subscribe</button>
+            </form>
+            <div class="social-icons">
+                <a href="#">L</a> <a href="#">X</a> <a href="#">I</a> </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        &copy; 2026 AGRIYIM DEFENCE LLP. All Rights Reserved. Designed for Tactical Excellence.
+    </div>
+</footer>
+
+<script>
+function toggleMenu(){
+    document.getElementById("navLinks").classList.toggle("active");
+}
+</script>
+
+</body>
+</html>

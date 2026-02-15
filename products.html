@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products & Services — AGRIYIM DEFENCE LLP</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: white;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* NAVBAR (UNCHANGED AS REQUESTED) */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 80px;
+            backdrop-filter: blur(12px);
+            background: rgba(0, 0, 0, 0.4);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            z-index: 1000;
+            animation: slideDown 1s ease;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        .logo { display: flex; align-items: center; gap: 12px; font-weight: 600; }
+        .logo img { width: 85px; }
+        .logo-text { line-height: 1.2; }
+
+        .nav-links { list-style: none; display: flex; gap: 35px; }
+        .nav-links a {
+            text-decoration: none;
+            color: #1ac4c4;
+            font-weight: 500;
+            transition: 0.4s;
+            position: relative;
+        }
+        .nav-links a:hover { color: #00f2ff; text-shadow: 0 0 10px #00f2ff; }
+        .nav-links a::after {
+            content: ""; position: absolute; left: 0; bottom: -5px; width: 0%; height: 2px;
+            background: linear-gradient(90deg, #00f2ff, #ff00c8); transition: 0.4s;
+        }
+        .nav-links a:hover::after { width: 100%; }
+
+        .menu-toggle { display: none; flex-direction: column; cursor: pointer; }
+        .menu-toggle span { width: 25px; height: 3px; background: white; margin: 4px 0; }
+
+        /* PRODUCTS PAGE STYLING */
+        .products-hero {
+            padding: 180px 10% 60px;
+            text-align: center;
+        }
+
+        .products-hero h1 {
+            font-size: 3.5rem;
+            background: linear-gradient(90deg, #00f2ff, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 20px 100px;
+        }
+
+        .product-section-title {
+            color: #1ac4c4;
+            font-size: 1.8rem;
+            margin: 40px 0 20px;
+            border-left: 4px solid #00f2ff;
+            padding-left: 15px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            transition: 0.4s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            background: rgba(26, 196, 196, 0.1);
+            border-color: #00f2ff;
+            box-shadow: 0 10px 30px rgba(0, 242, 255, 0.15);
+        }
+
+        .product-card h3 {
+            color: #00f2ff;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .product-card p {
+            color: #ccc;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .feature-list li {
+            font-size: 0.85rem;
+            color: #eee;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature-list li::before {
+            content: "▹";
+            color: #ff00c8;
+            font-weight: bold;
+        }
+
+        @media(max-width:768px){
+            .navbar { padding: 15px 30px; }
+            .nav-links {
+                position: absolute; top: 100%; right: 0; width: 100%;
+                background: black; flex-direction: column; align-items: center;
+                gap: 25px; padding: 30px 0; display: none;
+            }
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: flex; }
+            .products-hero h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">
+        <img src="images/logo_img.png" alt="Logo">
+        <div class="logo-text">AGRIYIM<br>DEFENCE LLP</div>
+    </div>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="products.html">Products & Services</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="career.html">Career</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+    <div class="menu-toggle" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+    </div>
+</nav>
+
+<section class="products-hero" data-aos="zoom-in">
+    <h1>Our Solutions</h1>
+    <p style="color: #ccc; max-width: 800px; margin: 0 auto;">
+        Delivering mission-ready platforms and indigenous technologies designed for the most demanding maritime and tactical environments.
+    </p>
+</section>
+
+<main class="container">
+    
+    <h2 class="product-section-title" data-aos="fade-right">Maritime Platforms</h2>
+    <div class="product-grid">
+        <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+            <div>
+                <h3>Rigid Inflatable Boats (RIBs)</h3>
+                <p>High-performance, multi-mission vessels designed for speed, stability, and extreme durability.</p>
+                <ul class="feature-list">
+                    <li>Reinforced Composite Hulls</li>
+                    <li>Shock-mitigating Seating</li>
+                    <li>Tactical Equipment Mounts</li>
+                    <li>High-Speed Interception Capability</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="product-card" data-aos="fade-up" data-aos-delay="200">
+            <div>
+                <h3>Specialized Patrol Craft</h3>
+                <p>Custom-built platforms for coastal surveillance, search and rescue, and border security operations.</p>
+                <ul class="feature-list">
+                    <li>Indigenously Manufactured</li>
+                    <li>Ruggedized Material Build</li>
+                    <li>Low Maintenance Design</li>
+                    <li>Optimized for Indian Waters</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="product-section-title" data-aos="fade-right">Unmanned Systems & Technology</h2>
+    <div class="product-grid">
+        <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+            <div>
+                <h3>Tactical Drone Systems</h3>
+                <p>Indigenous Unmanned Aerial Systems (UAS) for persistent surveillance and tactical intelligence gathering.</p>
+                <ul class="feature-list">
+                    <li>Autonomous Waypoint Navigation</li>
+                    <li>Encrypted Data Link</li>
+                    <li>Night-Vision/Thermal Integration</li>
+                    <li>Compact & Rapid Deployment</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="product-card" data-aos="fade-up" data-aos-delay="200">
+            <div>
+                <h3>Integrated Monitoring Units</h3>
+                <p>Sensor-rich hardware for real-time telemetry, environmental tracking, and situational awareness.</p>
+                <ul class="feature-list">
+                    <li>Real-time Data Analytics</li>
+                    <li>IoT Cloud Integration</li>
+                    <li>Ruggedized Enclosures</li>
+                    <li>Multi-Sensor Support</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="product-section-title" data-aos="fade-right">Professional Services</h2>
+    <div class="product-grid">
+        <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+            <div>
+                <h3>Consulting & Design</h3>
+                <p>Bespoke engineering solutions and tactical procurement consulting for government agencies.</p>
+            </div>
+        </div>
+
+        <div class="product-card" data-aos="fade-up" data-aos-delay="200">
+            <div>
+                <h3>Training & Deployment</h3>
+                <p>Comprehensive operator training and on-site technical support for all specialized platforms.</p>
+            </div>
+        </div>
+    </div>
+
+</main>
+<style>
+    /* FOOTER STYLING */
+    footer {
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(15px);
+        padding: 80px 10% 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        position: relative;
+    }
+
+    .footer-container {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1.5fr;
+        gap: 50px;
+        margin-bottom: 50px;
+    }
+
+    .footer-col h3 {
+        color: #00f2ff;
+        font-size: 1.2rem;
+        margin-bottom: 25px;
+        position: relative;
+    }
+
+    .footer-col h3::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -8px;
+        width: 40px;
+        height: 2px;
+        background: #ff00c8;
+    }
+
+    .footer-col p {
+        color: #ccc;
+        font-size: 0.9rem;
+        line-height: 1.8;
+    }
+
+    .footer-links {
+        list-style: none;
+    }
+
+    .footer-links li {
+        margin-bottom: 12px;
+    }
+
+    .footer-links a {
+        color: #ccc;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: 0.3s;
+    }
+
+    .footer-links a:hover {
+        color: #00f2ff;
+        padding-left: 5px;
+    }
+
+    .social-icons {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .social-icons a {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.05);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-decoration: none;
+        transition: 0.3s;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .social-icons a:hover {
+        background: #00f2ff;
+        color: #000;
+        transform: translateY(-5px);
+    }
+
+    .newsletter input {
+        width: 100%;
+        padding: 12px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: white;
+        border-radius: 5px;
+        outline: none;
+        margin-bottom: 10px;
+    }
+
+    .footer-bottom {
+        text-align: center;
+        padding-top: 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        color: #777;
+        font-size: 0.8rem;
+    }
+
+    @media (max-width: 992px) {
+        .footer-container { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 600px) {
+        .footer-container { grid-template-columns: 1fr; }
+        footer { padding: 60px 5% 30px; }
+    }
+</style>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-col" data-aos="fade-up">
+            <div class="logo" style="margin-bottom: 20px;">
+                <img src="images/logo_img.png" alt="Logo" style="width: 70px;">
+                <div class="logo-text" style="color: white; font-weight: 600;">AGRIYIM<br>DEFENCE LLP</div>
+            </div>
+            <p>Bridging the gap between operational needs and indigenous manufacturing execution. Pioneering the next generation of RIBs and Unmanned Systems for a secure nation.</p>
+        </div>
+
+        <div class="footer-col" data-aos="fade-up" data-aos-delay="100">
+            <h3>Explore</h3>
+            <ul class="footer-links">
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="products.html">Our Solutions</a></li>
+                <li><a href="projects.html">Key Projects</a></li>
+                <li><a href="career.html">Join the Team</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col" data-aos="fade-up" data-aos-delay="200">
+            <h3>Contact</h3>
+            <ul class="footer-links">
+                <li><a href="mailto:info@agriyim.com">info@agriyim.com</a></li>
+                <li style="color: #ccc;">+91-XXXXXXXXXX</li>
+                <li style="color: #ccc;">India</li>
+            </ul>
+        </div>
+
+        <div class="footer-col" data-aos="fade-up" data-aos-delay="300">
+            <h3>Updates</h3>
+            <p style="margin-bottom: 15px;">Subscribe to receive our latest project updates.</p>
+            <form class="newsletter">
+                <input type="email" placeholder="Email Address">
+                <button type="submit" class="apply-btn" style="width: 100%; padding: 10px; background: transparent; cursor: pointer;">Subscribe</button>
+            </form>
+            <div class="social-icons">
+                <a href="#">L</a> <a href="#">X</a> <a href="#">I</a> </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        &copy; 2026 AGRIYIM DEFENCE LLP. All Rights Reserved. Designed for Tactical Excellence.
+    </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 1000, once: true });
+    function toggleMenu() {
+        document.getElementById('navLinks').classList.toggle('active');
+    }
+</script>
+
+</body>
+</html>

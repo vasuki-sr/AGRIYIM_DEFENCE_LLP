@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — AGRIYIM DEFENCE LLP</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: white;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* NAVBAR (UNCHANGED) */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 80px;
+            backdrop-filter: blur(12px);
+            background: rgba(0, 0, 0, 0.4);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            z-index: 1000;
+            animation: slideDown 1s ease;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        .logo { display: flex; align-items: center; gap: 12px; font-weight: 600; }
+        .logo img { width: 85px; }
+        .logo-text { line-height: 1.2; }
+
+        .nav-links { list-style: none; display: flex; gap: 35px; }
+        .nav-links a {
+            text-decoration: none;
+            color: #1ac4c4;
+            font-weight: 500;
+            transition: 0.4s;
+            position: relative;
+        }
+        .nav-links a:hover { color: #00f2ff; text-shadow: 0 0 10px #00f2ff; }
+        .nav-links a::after {
+            content: ""; position: absolute; left: 0; bottom: -5px; width: 0%; height: 2px;
+            background: linear-gradient(90deg, #00f2ff, #ff00c8); transition: 0.4s;
+        }
+        .nav-links a:hover::after { width: 100%; }
+
+        .menu-toggle { display: none; flex-direction: column; cursor: pointer; }
+        .menu-toggle span { width: 25px; height: 3px; background: white; margin: 4px 0; }
+
+        /* CONTACT PAGE STYLING */
+        .contact-hero {
+            padding: 180px 10% 60px;
+            text-align: center;
+        }
+
+        .contact-hero h1 {
+            font-size: 3.5rem;
+            background: linear-gradient(90deg, #00f2ff, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px 100px;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 50px;
+        }
+
+        /* Info Cards */
+        .info-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-info-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+
+        .contact-info-card:hover {
+            border-color: #00f2ff;
+            background: rgba(26, 196, 196, 0.1);
+        }
+
+        .contact-info-card h3 {
+            color: #00f2ff;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .contact-info-card p {
+            color: #ccc;
+            font-size: 1rem;
+        }
+
+        /* Contact Form */
+        .form-panel {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #1ac4c4;
+            font-size: 0.9rem;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 12px 15px;
+            color: white;
+            border-radius: 8px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: #00f2ff;
+            box-shadow: 0 0 10px rgba(0, 242, 255, 0.2);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(90deg, #1ac4c4, #00f2ff);
+            border: none;
+            border-radius: 8px;
+            color: #000;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.4s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 242, 255, 0.3);
+        }
+
+        @media(max-width:992px) {
+            .container { grid-template-columns: 1fr; }
+        }
+
+        @media(max-width:768px){
+            .navbar { padding: 15px 30px; }
+            .nav-links {
+                position: absolute; top: 100%; right: 0; width: 100%;
+                background: black; flex-direction: column; align-items: center;
+                gap: 25px; padding: 30px 0; display: none;
+            }
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: flex; }
+            .contact-hero h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">
+        <img src="images/logo_img.png" alt="Logo">
+        <div class="logo-text">AGRIYIM<br>DEFENCE LLP</div>
+    </div>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="products.html">Products & Services</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="career.html">Career</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+    <div class="menu-toggle" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+    </div>
+</nav>
+
+<section class="contact-hero" data-aos="fade-down">
+    <h1>Get In Touch</h1>
+    <p style="color: #ccc; max-width: 600px; margin: 0 auto;">
+        Have inquiries regarding our RIB platforms or Unmanned Systems? Contact our team for technical specifications and procurement details.
+    </p>
+</section>
+
+<main class="container">
+    <div class="info-panel" data-aos="fade-right">
+        <div class="contact-info-card">
+            <h3>Registered Office</h3>
+            <p>[Insert Building Name/No.]<br>[Street Address]<br>[City, State, Zip Code]<br>India</p>
+        </div>
+        <div class="contact-info-card">
+            <h3>Email Us</h3>
+            <p>info@agriyim.com</p>
+        </div>
+        <div class="contact-info-card">
+            <h3>Call Us</h3>
+            <p>+91-XXXXXXXXXX</p>
+        </div>
+        <div class="contact-info-card">
+            <h3>Hours of Operation</h3>
+            <p>Mon - Sat: 09:00 AM - 06:00 PM</p>
+        </div>
+    </div>
+
+    <div class="form-panel" data-aos="fade-left">
+        <form action="#">
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label>Organization</label>
+                <input type="text" placeholder="Company/Agency Name">
+            </div>
+            <div class="form-group">
+                <label>Message</label>
+                <textarea rows="5" placeholder="How can we help you?" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+    </div>
+</main>
+<style>
+    /* FOOTER STYLING */
+    footer {
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(15px);
+        padding: 80px 10% 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        position: relative;
+    }
+
+    .footer-container {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1.5fr;
+        gap: 50px;
+        margin-bottom: 50px;
+    }
+
+    .footer-col h3 {
+        color: #00f2ff;
+        font-size: 1.2rem;
+        margin-bottom: 25px;
+        position: relative;
+    }
+
+    .footer-col h3::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -8px;
+        width: 40px;
+        height: 2px;
+        background: #ff00c8;
+    }
+
+    .footer-col p {
+        color: #ccc;
+        font-size: 0.9rem;
+        line-height: 1.8;
+    }
+
+    .footer-links {
+        list-style: none;
+    }
+
+    .footer-links li {
+        margin-bottom: 12px;
+    }
+
+    .footer-links a {
+        color: #ccc;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: 0.3s;
+    }
+
+    .footer-links a:hover {
+        color: #00f2ff;
+        padding-left: 5px;
+    }
+
+    .social-icons {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .social-icons a {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.05);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-decoration: none;
+        transition: 0.3s;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .social-icons a:hover {
+        background: #00f2ff;
+        color: #000;
+        transform: translateY(-5px);
+    }
+
+    .newsletter input {
+        width: 100%;
+        padding: 12px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: white;
+        border-radius: 5px;
+        outline: none;
+        margin-bottom: 10px;
+    }
+
+    .footer-bottom {
+        text-align: center;
+        padding-top: 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        color: #777;
+        font-size: 0.8rem;
+    }
+
+    @media (max-width: 992px) {
+        .footer-container { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 600px) {
+        .footer-container { grid-template-columns: 1fr; }
+        footer { padding: 60px 5% 30px; }
+    }
+</style>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-col" data-aos="fade-up">
+            <div class="logo" style="margin-bottom: 20px;">
+                <img src="images/logo_img.png" alt="Logo" style="width: 70px;">
+                <div class="logo-text" style="color: white; font-weight: 600;">AGRIYIM<br>DEFENCE LLP</div>
+            </div>
+            <p>Bridging the gap between operational needs and indigenous manufacturing execution. Pioneering the next generation of RIBs and Unmanned Systems for a secure nation.</p>
+        </div>
+
+        <div class="footer-col" data-aos="fade-up" data-aos-delay="100">
+            <h3>Explore</h3>
+            <ul class="footer-links">
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="products.html">Our Solutions</a></li>
+                <li><a href="projects.html">Key Projects</a></li>
+                <li><a href="career.html">Join the Team</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col" data-aos="fade-up" data-aos-delay="200">
+            <h3>Contact</h3>
+            <ul class="footer-links">
+                <li><a href="mailto:info@agriyim.com">info@agriyim.com</a></li>
+                <li style="color: #ccc;">+91-XXXXXXXXXX</li>
+                <li style="color: #ccc;">India</li>
+            </ul>
+        </div>
+
+        <div class="footer-col" data-aos="fade-up" data-aos-delay="300">
+            <h3>Updates</h3>
+            <p style="margin-bottom: 15px;">Subscribe to receive our latest project updates.</p>
+            <form class="newsletter">
+                <input type="email" placeholder="Email Address">
+                <button type="submit" class="apply-btn" style="width: 100%; padding: 10px; background: transparent; cursor: pointer;">Subscribe</button>
+            </form>
+            <div class="social-icons">
+                <a href="#">L</a> <a href="#">X</a> <a href="#">I</a> </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        &copy; 2026 AGRIYIM DEFENCE LLP. All Rights Reserved. Designed for Tactical Excellence.
+    </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 1000, once: true });
+    function toggleMenu() {
+        document.getElementById('navLinks').classList.toggle('active');
+    }
+</script>
+
+</body>
+</html>
