@@ -43,12 +43,13 @@
 
         .logo { display: flex; align-items: center; gap: 12px; font-weight: 600; }
         .logo img { width: 85px; }
-        .logo-text { line-height: 1.2; }
+        .logo-text { line-height: 1.2;  color: #ccc; }
 
-        .nav-links { list-style: none; display: flex; gap: 35px; }
+        .nav-links { list-style: none; display: flex; gap: 20px; }
         .nav-links a {
             text-decoration: none;
-            color: #1ac4c4;
+            color:#39f3f3;
+            font-size:14px;
             font-weight: 500;
             transition: 0.4s;
             position: relative;
@@ -67,11 +68,19 @@
         .products-hero {
             padding: 180px 10% 60px;
             text-align: center;
+            background: url('images/b5.jpg') center/cover no-repeat;
+            position: relative;
+            
         }
-
+        .products-hero::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(56, 82, 94, 0.445);
+        }
         .products-hero h1 {
             font-size: 3.5rem;
-            background: linear-gradient(90deg, #00f2ff, #ffffff);
+            background: linear-gradient(90deg, #03effc, #ffffff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 20px;
@@ -147,7 +156,71 @@
             color: #ff00c8;
             font-weight: bold;
         }
+/* Improved Alignment Styles */
+    .animated-gallery {
+        width: 100vw; /* Stretch to full viewport width */
+        position: relative;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+        padding: 60px 0;
+        margin-top: 50px;
+        background: rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+    }
 
+    .gallery-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 30px; /* Space between the two rows */
+        width: 100%;
+    }
+
+    .strip {
+        display: flex;
+        gap: 20px;
+        width: max-content; /* Ensure the strip is as wide as its content */
+    }
+
+    .strip img {
+        width: 350px;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 15px;
+        border: 1px solid rgba(0, 242, 255, 0.2);
+        transition: transform 0.4s ease, border-color 0.4s ease;
+    }
+
+    .strip img:hover {
+        transform: scale(1.05);
+        border-color: #00f2ff;
+        z-index: 10;
+    }
+
+    /* Animation adjustments for seamlessness */
+    .layer1 {
+        animation: scroll-left 40s linear infinite;
+    }
+
+    .layer2 {
+        animation: scroll-right 40s linear infinite;
+    }
+
+    @keyframes scroll-left {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); } /* Matches the duplicated images */
+    }
+
+    @keyframes scroll-right {
+        0% { transform: translateX(-50%); }
+        100% { transform: translateX(0); }
+    }
+
+    /* Pause on hover */
+    .strip:hover {
+        animation-play-state: paused;
+    }
         @media(max-width:768px){
             .navbar { padding: 15px 30px; }
             .nav-links {
@@ -158,16 +231,20 @@
             .nav-links.active { display: flex; }
             .menu-toggle { display: flex; }
             .products-hero h1 { font-size: 2.5rem; }
+
+            /* responsive adjustments for animated gallery */
+            .animated-gallery { padding: 40px 0; }
+            .strip img { width: 220px; height: 150px; }
         }
     </style>
 </head>
 <body>
 
 <nav class="navbar">
-    <div class="logo">
+    <a href="index.html" class="logo">
         <img src="images/logo_img.png" alt="Logo">
         <div class="logo-text">AGRIYIM<br>DEFENCE LLP</div>
-    </div>
+    </a>
     <ul class="nav-links" id="navLinks">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
@@ -182,8 +259,9 @@
 </nav>
 
 <section class="products-hero" data-aos="zoom-in">
+    
     <h1>Our Solutions</h1>
-    <p style="color: #ccc; max-width: 800px; margin: 0 auto;">
+    <p style="color: #fffcfc; max-width: 800px; margin: 0 auto;">
         Delivering mission-ready platforms and indigenous technologies designed for the most demanding maritime and tactical environments.
     </p>
 </section>
@@ -264,7 +342,33 @@
             </div>
         </div>
     </div>
+   <section class="animated-gallery" aria-label="Defence imagery showcase" data-aos="fade-up">
+        <div class="gallery-wrap">
+            <div class="strip layer1">
+                <img src="images/1.jpg" alt="Patrol boat" />
+                <img src="images/2.jpg" alt="Surveillance drone" />
+                <img src="images/3.jpg" alt="Marine system" />
+                <img src="images/4.jpg" alt="Tactical boat" />
+                <img src="images/5.jpg" alt="Patrol boat" />
+                <img src="images/6.jpg" alt="Surveillance drone" />
+                <img src="images/7.jpg" alt="Marine system" />
+                <img src="images/8.jpg" alt="Tactical boat" />
+            </div>
 
+            <div class="strip layer2">
+                <img src="images/9.jpg" alt="Drone team" />
+                <img src="images/10.jpg" alt="Naval platform" />
+                <img src="images/11.jpg" alt="High-speed craft" />
+                <img src="images/12.webp" alt="Drone team" />
+                <img src="images/13.jpg" alt="Drone team" />
+                <img src="images/14.jpg" alt="Naval platform" />
+                <img src="images/15.jpg" alt="High-speed craft" />
+                <img src="images/16.jpg" alt="Drone team" />
+            </div>
+        </div>
+    </section>
+</main>
+      
 </main>
 <style>
     /* FOOTER STYLING */
@@ -437,3 +541,5 @@
 
 </body>
 </html>
+
+

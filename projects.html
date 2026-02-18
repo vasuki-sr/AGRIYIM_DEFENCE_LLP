@@ -43,12 +43,13 @@
 
         .logo { display: flex; align-items: center; gap: 12px; font-weight: 600; }
         .logo img { width: 85px; }
-        .logo-text { line-height: 1.2; }
+        .logo-text { line-height: 1.2;  color: #ccc; }
 
-        .nav-links { list-style: none; display: flex; gap: 35px; }
+        .nav-links { list-style: none; display: flex; gap: 20px; }
         .nav-links a {
             text-decoration: none;
-            color: #1ac4c4;
+            color:#39f3f3;
+            font-size:14px;
             font-weight: 500;
             transition: 0.4s;
             position: relative;
@@ -63,111 +64,119 @@
         .menu-toggle { display: none; flex-direction: column; cursor: pointer; }
         .menu-toggle span { width: 25px; height: 3px; background: white; margin: 4px 0; }
 
-        /* PROJECTS PAGE STYLING */
+       /* PROJECT HERO */
         .projects-hero {
-            padding: 180px 10% 60px;
+            padding: 180px 10% 80px;
             text-align: center;
+            background: url('https://images.unsplash.com/photo-1504333638930-c8787321eee0?auto=format&fit=crop&q=80&w=2000') no-repeat center/cover;
+            background-blend-mode: overlay;
+            background-color: rgba(0,0,0,0.7);
         }
 
         .projects-hero h1 {
             font-size: 3.5rem;
-            background: linear-gradient(90deg, #00f2ff, #ffffff);
+            background: linear-gradient(90deg, #03effc, #ffffff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 20px;
         }
 
-        .container {
-            max-width: 1200px;
+        /* MODERN GALLERY GRID */
+        .gallery-container {
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 20px 20px 100px;
+            padding: 60px 20px;
         }
 
-        .project-grid {
+        .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            grid-auto-rows: 300px;
+            gap: 20px;
         }
 
-        .project-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: 0.4s;
+        /* Large item spanning 2 columns/rows for visual interest */
+        .gallery-item.large {
+            grid-column: span 2;
+            grid-row: span 2;
         }
 
-        .project-card:hover {
-            transform: translateY(-10px);
-            border-color: #00f2ff;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .project-image {
-            height: 250px;
-            width: 100%;
-            background-color: #1a1a1a;
+        .gallery-item {
             position: relative;
+            border-radius: 15px;
             overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
-        /* Placeholder images using patterns - replace with actual project photos */
-        .img-1 { background: linear-gradient(45deg, #2c3e50, #000000); }
-        .img-2 { background: linear-gradient(45deg, #1a2a6c, #b21f1f); }
-        .img-3 { background: linear-gradient(45deg, #0f2027, #2c5364); }
-
-        .project-image img {
+        .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.7;
-            transition: 0.5s;
+            transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
         }
 
-        .project-card:hover .project-image img {
-            transform: scale(1.1);
+        /* Overlay Effect */
+        .overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,242,255,0.2), transparent);
+            opacity: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+            transition: 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.15) rotate(2deg);
+        }
+
+        .gallery-item:hover .overlay {
             opacity: 1;
         }
 
-        .project-content {
-            padding: 30px;
-        }
-
-        .project-tag {
-            color: #00f2ff;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        .project-content h3 {
+        .overlay h3 {
             font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: #fff;
+            color: #00f2ff;
+            margin-bottom: 5px;
+            transform: translateY(20px);
+            transition: 0.4s 0.1s;
         }
 
-        .project-content p {
-            color: #ccc;
-            font-size: 0.95rem;
-            margin-bottom: 20px;
+        .overlay p {
+            font-size: 0.9rem;
+            color: #eee;
+            transform: translateY(20px);
+            transition: 0.4s 0.2s;
         }
 
-        .tech-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
+        .gallery-item:hover h3, 
+        .gallery-item:hover p {
+            transform: translateY(0);
         }
 
-        .tech-tags span {
-            background: rgba(26, 196, 196, 0.1);
-            color: #1ac4c4;
-            padding: 4px 12px;
-            border-radius: 5px;
-            font-size: 0.75rem;
-            border: 1px solid rgba(26, 196, 196, 0.3);
+        .project-id {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 242, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            backdrop-filter: blur(5px);
+            border: 1px solid #00f2ff;
+        }
+
+        /* Responsive */
+        @media(max-width: 900px) {
+            .gallery-grid { grid-template-columns: 1fr 1fr; }
+            .gallery-item.large { grid-column: span 1; grid-row: span 1; }
+        }
+        @media(max-width: 600px) {
+            .gallery-grid { grid-template-columns: 1fr; }
         }
 
         @media(max-width:768px){
@@ -186,10 +195,10 @@
 <body>
 
 <nav class="navbar">
-    <div class="logo">
+    <a href="index.html" class="logo">
         <img src="images/logo_img.png" alt="Logo">
         <div class="logo-text">AGRIYIM<br>DEFENCE LLP</div>
-    </div>
+    </a>
     <ul class="nav-links" id="navLinks">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
@@ -203,63 +212,71 @@
     </div>
 </nav>
 
-<section class="projects-hero" data-aos="fade-down">
-    <h1>Strategic Projects</h1>
-    <p style="color: #ccc; max-width: 700px; margin: 0 auto;">
-        Our projects represent the frontier of indigenous defense technology, ranging from high-speed maritime interceptors to sophisticated autonomous aerial platforms.
-    </p>
+<section class="projects-hero" data-aos="fade-in">
+    <h1>Project Gallery</h1>
+    <p style="color: #00f2ff; font-weight: 500; letter-spacing: 2px;">SECURE. INDIGENOUS. TACTICAL.</p>
 </section>
 
-<main class="container">
-    <div class="project-grid">
+<main class="gallery-container">
+    <div class="gallery-grid">
         
-        <div class="project-card" data-aos="fade-up" data-aos-delay="100">
-            <div class="project-image img-1">
-                </div>
-            <div class="project-content">
-                <span class="project-tag">Marine Engineering</span>
-                <h3>Advanced RIB Platforms</h3>
-                <p>Custom-built Rigid Inflatable Boats designed for high-speed interception and coastal patrol. Featuring reinforced hull technology for extreme maritime conditions.</p>
-                <div class="tech-tags">
-                    <span>High-Speed</span>
-                    <span>Durability</span>
-                    <span>Tactical Ops</span>
-                </div>
+        <div class="gallery-item large" data-aos="zoom-in">
+            <div class="project-id">PROJ-001</div>
+            <img src="https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?auto=format&fit=crop&q=80&w=1000" alt="RIB Boat">
+            <div class="overlay">
+                <h3>Advanced RIB Interceptors</h3>
+                <p>High-speed maritime deployment for elite coastal security units.</p>
             </div>
         </div>
 
-        <div class="project-card" data-aos="fade-up" data-aos-delay="200">
-            <div class="project-image img-2">
-                </div>
-            <div class="project-content">
-                <span class="project-tag">Unmanned Systems</span>
-                <h3>Indigenous UAV Integration</h3>
-                <p>Development of unmanned aerial solutions for persistent surveillance and border security. Focused on autonomous navigation and real-time data relay.</p>
-                <div class="tech-tags">
-                    <span>Autonomous</span>
-                    <span>Surveillance</span>
-                    <span>Indigenous</span>
-                </div>
+        <div class="gallery-item" data-aos="fade-up">
+            <div class="project-id">PROJ-002</div>
+            <img src="https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&q=80&w=800" alt="UAV">
+            <div class="overlay">
+                <h3>Vanguard UAV Integration</h3>
+                <p>Autonomous aerial surveillance with thermal imaging capabilities.</p>
             </div>
         </div>
 
-        <div class="project-card" data-aos="fade-up" data-aos-delay="300">
-            <div class="project-image img-3">
-                </div>
-            <div class="project-content">
-                <span class="project-tag">Tactical Solutions</span>
-                <h3>Integrated Monitoring Units</h3>
-                <p>Deployment of ruggedized sensor networks for coastal security, enabling real-time threat detection and situational awareness for government agencies.</p>
-                <div class="tech-tags">
-                    <span>Telemetry</span>
-                    <span>Ruggedized</span>
-                    <span>Coast Guard</span>
-                </div>
+        <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
+            <div class="project-id">PROJ-003</div>
+            <img src="https://images.unsplash.com/photo-1551135049-8a33b5883817?auto=format&fit=crop&q=80&w=800" alt="Command Center">
+            <div class="overlay">
+                <h3>Tactical Command Units</h3>
+                <p>Ruggedized field monitoring stations for remote borders.</p>
             </div>
         </div>
+
+        <div class="gallery-item" data-aos="fade-up">
+            <div class="project-id">PROJ-004</div>
+            <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=800" alt="Sensor">
+            <div class="overlay">
+                <h3>Sonar Grid Alpha</h3>
+                <p>Underwater threat detection systems for naval ports.</p>
+            </div>
+        </div>
+
+        <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
+            <div class="project-id">PROJ-005</div>
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800" alt="Cyber">
+            <div class="overlay">
+                <h3>Encrypted Data Relays</h3>
+                <p>Secure communication channels for troop coordinates.</p>
+            </div>
+        </div>
+        <div class="gallery-item" data-aos="fade-up">
+            <div class="project-id">PROJ-004</div>
+            <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=800" alt="Sensor">
+            <div class="overlay">
+                <h3>Sonar Grid Alpha</h3>
+                <p>Underwater threat detection systems for naval ports.</p>
+            </div>
+        </div>
+       
 
     </div>
 </main>
+
 <style>
     /* FOOTER STYLING */
     footer {

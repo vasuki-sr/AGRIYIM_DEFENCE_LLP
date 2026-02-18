@@ -43,12 +43,13 @@
 
         .logo { display: flex; align-items: center; gap: 12px; font-weight: 600; }
         .logo img { width: 85px; }
-        .logo-text { line-height: 1.2; }
+        .logo-text { color: #ccc; line-height: 1.2; }
 
-        .nav-links { list-style: none; display: flex; gap: 35px; }
+        .nav-links { list-style: none; display: flex; gap: 20px; }
         .nav-links a {
             text-decoration: none;
-            color: #1ac4c4;
+            color:#39f3f3;
+            font-size:14px;
             font-weight: 500;
             transition: 0.4s;
             position: relative;
@@ -192,10 +193,10 @@
 <body>
 
 <nav class="navbar">
-    <div class="logo">
+    <a href="index.html" class="logo">
         <img src="images/logo_img.png" alt="Logo">
         <div class="logo-text">AGRIYIM<br>DEFENCE LLP</div>
-    </div>
+    </a>
     <ul class="nav-links" id="navLinks">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>

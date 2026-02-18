@@ -16,9 +16,12 @@
 }
 
 body{
-    background:#0f2027;
+    background: #0f2027; /* Fallback */
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
     color:white;
     overflow-x:hidden;
+    line-height: 1.6;
+
 }
 
 /* NAVBAR */
@@ -31,8 +34,12 @@ body{
     align-items:center;
     padding:15px 80px;
     backdrop-filter:blur(12px);
-    background:rgba(0,0,0,0.4);
-    border-bottom:1px solid rgba(255,255,255,0.2);
+    background: rgba(0, 0, 0, 0.4);;
+    /* Modern Gradient with Glassmorphism */
+    /* background: linear-gradient(135deg, rgba(58, 205, 212, 0.9), rgba(58, 155, 168, 0.973), rgba(15, 95, 91, 0.7));
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px); */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     z-index:1000;
     animation:slideDown 1s ease;
 }
@@ -55,17 +62,19 @@ body{
 
 .logo-text{
     line-height:1.2;
+    color: #ccc;
 }
 
 .nav-links{
     list-style:none;
     display:flex;
-    gap:35px;
+    gap:20px;
 }
 
 .nav-links a{
     text-decoration:none;
-    color:#1ac4c4;
+    color:#39f3f3;
+    font-size:14px;
     font-weight:500;
     transition:0.4s;
     position:relative;
@@ -159,7 +168,8 @@ body{
     color:#ddd;
 }
 
-.hero button{
+.hero .hero-btn,
+.hero button {
     margin-top:30px;
     padding:12px 30px;
     border:none;
@@ -169,8 +179,11 @@ body{
     font-size:16px;
     cursor:pointer;
     transition:0.4s;
+    text-decoration:none;
+    display:inline-block;
 }
 
+.hero .hero-btn:hover,
 .hero button:hover{
     transform:scale(1.1);
 }
@@ -223,7 +236,7 @@ body{
         display: block;
         width: 60px;
         height: 4px;
-        background: #3A6073;
+        background: #4f839c;
         margin-top: 10px;
         transition: width 0.3s ease;
     }
@@ -258,6 +271,30 @@ body{
     .hero h1{
         font-size:32px;
     }
+    .hero p{
+        font-size:16px;
+        padding:0 20px;
+    }
+    .section{
+        padding:60px 5% !important;
+    }
+    /* about section stacks vertically */
+    #about > div{
+        flex-direction:column;
+        gap:30px;
+    }
+    #about img{
+        height:auto;
+        max-height:300px;
+    }
+    /* services cards full width */
+    .service-card{
+        min-width:100% !important;
+        margin-bottom:20px;
+    }
+    footer{
+        padding:60px 5% 30px;
+    }
 }
 
 </style>
@@ -266,10 +303,10 @@ body{
 <body>
 
 <nav class="navbar">
-    <div class="logo">
+    <a href="index.html" class="logo">
         <img src="images/logo_img.png" alt="Logo">
         <div class="logo-text">AGRIYIM<br>DEFENCE LLP</div>
-    </div>
+    </a>
 
     <ul class="nav-links" id="navLinks">
         <li><a href="index.html">Home</a></li>
@@ -289,17 +326,18 @@ body{
 
 <!-- HERO WITH BACKGROUND VIDEO -->
 <section class="hero">
-    <video autoplay muted loop>
+    <!-- <video autoplay muted loop>
         <source src="images/background-video.mp4" type="video/mp4">
-    </video>
+    </video> -->
+    <img src="images/b1.jpg" alt="Hero Background" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:-1;">
     <div class="hero-content">
         <h1>Innovating Defence Technology</h1>
         <p>Advanced Security Solutions • Strategic Engineering • Future Ready Systems</p>
-        <button>Explore More</button>
+        <a href="products.html" class="hero-btn">Explore More</a>
     </div>
 </section>
 
-<section class="section" id="about" style="background: #0f172a; color: white;">
+<section class="section" id="about" style="background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); color: white;">
     <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:60px;">
         <div style="flex:1; min-width:320px; position: relative;">
             <img src="images/about.jpg" alt="About Image" class="animated-img" 
@@ -319,7 +357,7 @@ body{
     </div>
 </section>
 
-<section class="section" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); text-align: center; border-top: 1px solid rgba(255,255,255,0.05);">
+<section class="section" style=" background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); text-align: center; border-top: 1px solid rgba(255,255,255,0.05);">
     <div style="max-width: 1000px; margin: auto;">
         <h2 class="section-title" style="display: inline-block; margin-bottom: 20px;">Our Mission</h2>
         <p style="line-height:1.9; color:#cbd5e1; font-size: 18px; margin-bottom: 50px; font-style: italic;">
@@ -335,7 +373,7 @@ body{
     </div>
 </section>
 
-<section class="section" id="services" style="background: #0f172a; text-align: center;">
+<section class="section" id="services" style=" background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);">
     <h2 class="section-title" style="display: inline-block; margin-bottom: 50px;">Core Capabilities</h2>
     <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:30px;">
         
