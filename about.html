@@ -8,104 +8,114 @@
     <!-- font awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pXI0jP+7aXq+m8Z0rCPpGOJg/8A3GZLo48r5VqCFhVs/R/3oeQ2XxqR9G4f9mCQ6D3FZqG9fHQTFHjK8a3I4mQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
+        *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
 
-        body {
-            background: #0f2027; /* Fallback */
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-            color: white;
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
+body{
+    background: #0f2027; /* Fallback */
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color:white;
+    overflow-x:hidden;
+    line-height: 1.6;
 
-        /* NAVBAR (UNCHANGED AS REQUESTED) */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 80px;
-            backdrop-filter: blur(12px);
-            background: rgba(0, 0, 0, 0.4);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            z-index: 1000;
-            animation: slideDown 1s ease;
-        }
+}
 
-        @keyframes slideDown {
-            from { transform: translateY(-100%); }
-            to { transform: translateY(0); }
-        }
+/* NAVBAR */
+.navbar{
+    position:fixed;
+    top:0;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 80px;
+    backdrop-filter:blur(12px);
+    background: rgba(0, 0, 0, 0.4);;
+   
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    z-index:1000;
+    animation:slideDown 1s ease;
+}
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-weight: 600;
-            text-decoration: none;
-        }
+@keyframes slideDown{
+    from{transform:translateY(-100%);}
+    to{transform:translateY(0);}
+}
 
-        .logo img { width: 85px; }
-        .logo-text {  color: #ccc; line-height: 1.2; }
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-weight:600;
+    text-decoration:none;
+}
 
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-        }
+.logo img{
+    width:85px;
+}
 
-        .nav-links a {
-            text-decoration: none;
-            color:#39f3f3;
-            font-size:14px;
-            font-weight: 500;
-            transition: 0.4s;
-            position: relative;
-        }
+.logo-text{
+    line-height:1.2;
+    color: #ccc;
+}
 
-        .nav-links a:hover {
-            color: #00f2ff;
-            text-shadow: 0 0 10px #00f2ff;
-        }
+.nav-links{
+    list-style:none;
+    display:flex;
+    gap:20px;
+}
 
-        .nav-links a::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: -5px;
-            width: 0%;
-            height: 2px;
-            background: linear-gradient(90deg, #00f2ff, #ff00c8);
-            transition: 0.4s;
-        }
+.nav-links a{
+    text-decoration:none;
+    color:#39f3f3;
+    font-size:14px;
+    font-weight:500;
+    transition:0.4s;
+    position:relative;
+}
 
-        .nav-links a:hover::after { width: 100%; }
+.nav-links a:hover{
+    color:#00f2ff;
+    text-shadow:0 0 10px #00f2ff;
+}
 
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
+.nav-links a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-5px;
+    width:0%;
+    height:2px;
+    background:linear-gradient(90deg,#00f2ff,#ff00c8);
+    transition:0.4s;
+}
 
-        .menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background: white;
-            margin: 4px 0;
-        }
+.nav-links a:hover::after{
+    width:100%;
+}
+
+.menu-toggle{
+    display:none;
+    flex-direction:column;
+    cursor:pointer;
+}
+
+.menu-toggle span{
+    width:25px;
+    height:3px;
+    background:white;
+    margin:4px 0;
+}
 
         /* NEW CONTENT STYLING */
         .hero-section {
             padding: 180px 10% 80px;
             text-align: center;
-            background: url('images/b6.jpg') no-repeat;
+            background: url('images/4.jpg') no-repeat;
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -116,7 +126,7 @@
             content: "";
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(46, 73, 87, 0.233);
+            background: rgba(0,0,0,0.6);
         }
 
         .hero-content {
@@ -125,11 +135,19 @@
         }
 
         .hero-content h1 {
-            font-size: 3.5rem;
+            font-size: 3rem;
             margin-bottom: 20px;
             background: linear-gradient(90deg, #7af8ff, #e7e5e5);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content p {
+            position: relative;
+            z-index: 1;
+            color: #ffffff;
+            font-weight: 500;
+            font-size: 1rem;
         }
 
         .tactical-about-wrapper {
@@ -474,33 +492,74 @@
     }
 
 
-        @media (max-width: 768px) {
-            /* layout adaptations */
-            .modern-why-grid { grid-template-columns: 1fr; }
-            .background-split-card { padding: 30px; }
-
-            /* navigation and header */
-            .navbar{ padding:15px 30px; }
-            .nav-links{
-                position:absolute; top:100%; right:0; width:100%;
-                background:black; flex-direction:column; align-items:center;
-                gap:25px; padding:30px 0; display:none;
-            }
-            .nav-links.active{ display:flex; }
-            .menu-toggle{ display:flex; }
-
-            /* hero text shrink */
-            .hero-content h1 { font-size: 2.5rem; }
-
-            /* cards, images and other blocks */
-            .glass-card {
-                grid-template-columns: 1fr;
-                padding: 25px;
-            }
-            .intel-image-box { margin-bottom: 20px; }
-            .tactical-img { height: auto; max-height: 300px; }
-            .scan-line { display: none; }
+       /* Modified Media Query for 768px and below */
+@media (max-width: 768px) {
+    /* Fix Navbar spacing and alignment */
+    .navbar { 
+            padding: 10px 20px; /* Reduced padding to give more room */
+            justify-content: space-between;
         }
+
+        /* Scale down the logo so it doesn't push the menu button away */
+        .logo img { 
+            width: 50px; 
+        }
+        .logo-text {
+            font-size: 0.8rem; /* Smaller text for mobile */
+        }
+
+        /* Ensure the 3-line menu (toggle) is visible and positioned right */
+        .menu-toggle { 
+            display: flex; 
+            z-index: 1001;
+        }
+
+        /* Fix navigation links overlay */
+        .nav-links {
+            position: fixed; /* Changed from absolute to fixed for better mobile stability */
+            top: 0; 
+            right: -100%; /* Start off-screen */
+            width: 70%; 
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.95); 
+            flex-direction: column; 
+            align-items: center;
+            justify-content: center;
+            gap: 25px; 
+            padding: 30px 0; 
+            transition: 0.3s ease-in-out;
+            display: flex; /* Always flex, but moved off-screen */
+        }
+
+        .nav-links.active { 
+            right: 0; /* Slide in when active */
+        }
+        .projects-hero h1 {
+             font-size: 2.5rem; }
+        
+    /* Adjust Hero and Content for smaller screens */
+    .hero-content h1 { 
+        font-size: 2.2rem; 
+    }
+    .hero-content p { font-size: 1rem; }
+    .hero-section {
+        padding: 120px 5% 50px;
+    }
+
+    /* Fix Layout Blocks */
+    .modern-why-grid { grid-template-columns: 1fr; }
+    .background-split-card { padding: 25px; }
+    .glass-card {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+    .intel-image-box { margin-bottom: 20px; }
+    .tactical-img { height: auto; max-height: 250px; }
+    .scan-line { display: none; }
+    
+    /* Footer fix */
+    .footer-container { grid-template-columns: 1fr; }
+}
     </style>
 </head>
 <body>
@@ -530,7 +589,7 @@
 <section class="hero-section">
     <div class="hero-content" data-aos="zoom-out" data-aos-duration="1500">
         <h1>Company Profile</h1>
-        <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto; opacity: 0.9;color: #ffffff;">
+        <p style="font-size: 1rem; max-width: 800px; margin: 0 auto; opacity: 0.9;color: #ffffff;">
             Advancing National Security through Indigenous Marine Engineering and Unmanned Technologies.
         </p>
     </div>
