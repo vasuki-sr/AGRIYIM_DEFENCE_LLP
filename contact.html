@@ -41,7 +41,7 @@
             to { transform: translateY(0); }
         }
 
-        .logo { display: flex; align-items: center; gap: 12px; font-weight: 600; }
+        .logo { display: flex; align-items: center; gap: 12px; font-weight: 600; text-decoration: none; }
         .logo img { width: 85px; }
         .logo-text { color: #ccc; line-height: 1.2; }
 
@@ -68,6 +68,16 @@
         .contact-hero {
             padding: 180px 10% 60px;
             text-align: center;
+            background: url('images/9.jpg') center/cover no-repeat;
+            position: relative;
+        }
+
+        .contact-hero::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            pointer-events: none;
         }
 
         .contact-hero h1 {
@@ -76,6 +86,8 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 20px;
+            position: relative; /* stay above overlay */
+            z-index: 1;
         }
 
         .container {
@@ -173,11 +185,12 @@
             box-shadow: 0 10px 20px rgba(0, 242, 255, 0.3);
         }
 
-        @media(max-width:992px) {
+        @media (max-width: 992px) {
             .container { grid-template-columns: 1fr; }
         }
 
-        @media(max-width:768px){
+        @media (max-width: 768px) {
+            /* navigation adjustments */
             .navbar { padding: 15px 30px; }
             .nav-links {
                 position: absolute; top: 100%; right: 0; width: 100%;
@@ -186,7 +199,15 @@
             }
             .nav-links.active { display: flex; }
             .menu-toggle { display: flex; }
+
+            /* hero tweaks */
+            .contact-hero {
+                padding: 120px 5% 40px;
+            }
             .contact-hero h1 { font-size: 2.5rem; }
+
+            /* container spacing for form/cards */
+            .container { padding: 20px 10px 60px; }
         }
     </style>
 </head>
@@ -212,7 +233,7 @@
 
 <section class="contact-hero" data-aos="fade-down">
     <h1>Get In Touch</h1>
-    <p style="color: #ccc; max-width: 600px; margin: 0 auto;">
+    <p style="color: #ffffff; max-width: 600px; margin: 0 auto ;">
         Have inquiries regarding our RIB platforms or Unmanned Systems? Contact our team for technical specifications and procurement details.
     </p>
 </section>
@@ -387,10 +408,12 @@
         <div class="footer-col" data-aos="fade-up" data-aos-delay="100">
             <h3>Explore</h3>
             <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
-                <li><a href="products.html">Our Solutions</a></li>
-                <li><a href="projects.html">Key Projects</a></li>
-                <li><a href="career.html">Join the Team</a></li>
+                <li><a href="products.html">Products &amp; Services</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="career.html">Career</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
             </ul>
         </div>
 
@@ -430,3 +453,4 @@
 
 </body>
 </html>
+

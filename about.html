@@ -49,6 +49,7 @@
             align-items: center;
             gap: 12px;
             font-weight: 600;
+            text-decoration: none;
         }
 
         .logo img { width: 85px; }
@@ -358,10 +359,6 @@
 .center-title { justify-content: center; }
 .text-center-header { text-align: center; margin-bottom: 20px; }
 
-@media (max-width: 768px) {
-    .modern-why-grid { grid-template-columns: 1fr; }
-    .background-split-card { padding: 30px; }
-}
 
     /* FOOTER STYLING */
     footer {
@@ -477,7 +474,12 @@
     }
 
 
-        @media(max-width:768px){
+        @media (max-width: 768px) {
+            /* layout adaptations */
+            .modern-why-grid { grid-template-columns: 1fr; }
+            .background-split-card { padding: 30px; }
+
+            /* navigation and header */
             .navbar{ padding:15px 30px; }
             .nav-links{
                 position:absolute; top:100%; right:0; width:100%;
@@ -486,12 +488,15 @@
             }
             .nav-links.active{ display:flex; }
             .menu-toggle{ display:flex; }
+
+            /* hero text shrink */
             .hero-content h1 { font-size: 2.5rem; }
+
+            /* cards, images and other blocks */
             .glass-card {
                 grid-template-columns: 1fr;
                 padding: 25px;
             }
-            /* tactical image adjustments for smaller screens */
             .intel-image-box { margin-bottom: 20px; }
             .tactical-img { height: auto; max-height: 300px; }
             .scan-line { display: none; }
@@ -549,7 +554,7 @@
                     </div>
 
                     <div class="briefing-content">
-                        <div class="id-label">MISSION_PROFILE_01</div>
+                        <!-- <div class="id-label">MISSION_PROFILE_01</div> -->
                         <h2 class="section-title">About Us</h2>
                         
                         <div class="text-block">
@@ -670,10 +675,12 @@
         <div class="footer-col" data-aos="fade-up" data-aos-delay="100">
             <h3>Explore</h3>
             <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
-                <li><a href="products.html">Our Solutions</a></li>
-                <li><a href="projects.html">Key Projects</a></li>
-                <li><a href="career.html">Join the Team</a></li>
+                <li><a href="products.html">Products &amp; Services</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="career.html">Career</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
             </ul>
         </div>
 
