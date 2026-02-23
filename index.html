@@ -29,13 +29,13 @@ body{
     position:fixed;
     top:0;
     width:100%;
+    height: 80px;
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:15px 80px;
+    padding:15px 40px;
     backdrop-filter:blur(12px);
-    background: rgba(0, 0, 0, 0.4);;
-   
+    background: linear-gradient(rgb(62, 105, 105), rgba(255, 255, 255, 0.1));
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     z-index:1000;
     animation:slideDown 1s ease;
@@ -56,6 +56,7 @@ body{
 
 .logo img{
     width:85px;
+    height: 60px;
 }
 
 .logo-text{
@@ -71,7 +72,7 @@ body{
 
 .nav-links a{
     text-decoration:none;
-    color:#39f3f3;
+    color:#0cffff;
     font-size:14px;
     font-weight:500;
     transition:0.4s;
@@ -263,9 +264,9 @@ body{
             position: fixed; /* Changed from absolute to fixed for better mobile stability */
             top: 0; 
             right: -100%; /* Start off-screen */
-            width: 70%; 
+            width: 30%; 
             height: 100vh;
-            background: rgba(0, 0, 0, 0.95); 
+            background: rgba(61, 59, 59, 0.95); 
             flex-direction: column; 
             align-items: center;
             justify-content: center;

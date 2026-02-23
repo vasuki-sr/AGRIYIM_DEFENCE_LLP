@@ -27,12 +27,13 @@ body{
     position:fixed;
     top:0;
     width:100%;
+    height: 80px;
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:15px 80px;
+    padding:15px 40px;
     backdrop-filter:blur(12px);
-    background: rgba(0, 0, 0, 0.4);;
+    background: linear-gradient(rgb(62, 105, 105), rgba(255, 255, 255, 0.1));
    
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     z-index:1000;
@@ -54,6 +55,7 @@ body{
 
 .logo img{
     width:85px;
+    height: 60px;
 }
 
 .logo-text{
@@ -69,7 +71,7 @@ body{
 
 .nav-links a{
     text-decoration:none;
-    color:#39f3f3;
+    color: #0cffff;
     font-size:14px;
     font-weight:500;
     transition:0.4s;
@@ -112,7 +114,7 @@ body{
         .products-hero {
             padding: 180px 10% 60px;
             text-align: center;
-            background: url('images/10.jpg') center/cover no-repeat;
+            background: url('images/prod.jpg') center/cover no-repeat;
             position: relative;
         }
         .products-hero::before {
@@ -124,7 +126,7 @@ body{
         }
         .products-hero h1 {
             font-size: 3rem;
-            background: linear-gradient(90deg, #37e6f0, #ffffff);
+            background: linear-gradient(90deg, #7feff5, #b6c8cc);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 20px;
@@ -138,6 +140,7 @@ body{
             color: #ffffff;
             font-size: 1rem;
             font-weight: 500;
+            
         }
 
         .container {
@@ -300,9 +303,9 @@ body{
             position: fixed; /* Changed from absolute to fixed for better mobile stability */
             top: 0; 
             right: -100%; /* Start off-screen */
-            width: 70%; 
+            width: 30%; 
             height: 100vh;
-            background: rgba(0, 0, 0, 0.95); 
+            background: rgba(61, 59, 59, 0.95);  
             flex-direction: column; 
             align-items: center;
             justify-content: center;
@@ -350,8 +353,7 @@ body{
 <section class="products-hero" data-aos="zoom-in">
     
     <h1>Our Solutions</h1>
-    <p style="color: #fffcfc; max-width: 800px; margin: 0 auto;">
-        Delivering mission-ready platforms and indigenous technologies designed for the most demanding maritime and tactical environments.
+    <p>Delivering mission-ready platforms and indigenous technologies designed for the most demanding maritime and tactical environments.
     </p>
 </section>
 
