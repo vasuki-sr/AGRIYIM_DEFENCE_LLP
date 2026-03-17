@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agriyim Defence Navbar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+    --gold: #D4AF37;
+    --white: #ffffff;
+    --bg-dark: #050505;
+}
+
+.defense-nav {
+    width: 100%;       
+    position: fixed;   
+    top: 0;           
+    left: 0;           
+    margin: 0;         
+    padding: 0 20px;   /* Internal padding only so the logo isn't touching the glass */
+    background-color: #050505;
+    z-index: 1000;
+}
+
+.nav-container {
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 80px;
+    filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.2));
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-links li {
+    position: relative;
+    padding: 10px 5px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+    color: var(--white); /* Inactive links are white */
+    padding-bottom: 8px;
+    position: relative;
+}
+
+/* --- THE UNDERLINE LOGIC --- */
+
+/* Base style for the underline (hidden by default) */
+.nav-links li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--gold);
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 10px var(--gold);
+}
+
+/* Hover Effect: Show underline & change color to gold */
+.nav-links li a:hover {
+    color: var(--gold);
+}
+
+.nav-links li a:hover::after {
+    width: 100%;
+}
+
+/* ACTIVE STATE: Always Yellow and Underlined */
+.nav-links li a.active {
+    color: var(--gold) !important;
+}
+
+.nav-links li a.active::after {
+    width: 100%; /* Keep underline visible */
+}
+
+/* --- The Separators --- */
+.separator {
+    color: var(--gold);
+    font-size: 16px;
+    /* opacity: 0.8; */
+    margin: 0 10px;
+    font-weight: 500;
+    pointer-events: none; /* User can't click the bars */
+}
+    </style>
+</head>
+
+<body>
+
+<nav class="defense-nav">
+    <div class="nav-container">
+        <div class="logo">
+            <img src="images/logo_image.jpeg" alt="Logo">
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <span class="separator">|</span>
+            <li><a href="about.html">About</a></li>
+            <span class="separator">|</span>
+            <li><a href="products-services.html">Products & Services</a></li>
+            <span class="separator">|</span>
+            <li><a href="projects.html">Projects</a></li>
+            <span class="separator">|</span>
+            <li><a href="career.html">Career</a></li>
+            <span class="separator">|</span>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </div>
+</nav>
+
+
+
+
+
+</body>
+
+</html>

@@ -29,14 +29,13 @@ body{
     position:fixed;
     top:0;
     width:100%;
-    height: 80px;
+    height: 120px;
     display:flex;
     justify-content:space-between;
     align-items:center;
     padding:15px 40px;
     backdrop-filter:blur(12px);
-    background: linear-gradient(rgb(62, 105, 105), rgba(255, 255, 255, 0.1));
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(0, 0, 0, 0.9); /* Slightly transparent black */
     z-index:1000;
     animation:slideDown 1s ease;
 }
@@ -52,16 +51,39 @@ body{
     gap:12px;
     font-weight:600;
     text-decoration:none;
+    
 }
 
 .logo img{
-    width:85px;
-    height: 60px;
+    height: 100px; 
+    width: 110px;   
+    object-fit: contain; 
+    display: block;
 }
 
-.logo-text{
-    line-height:1.2;
-    color: #ccc;
+.logo-text {
+    display: flex;
+    flex-direction: column; /* Stacks the two lines */
+    justify-content: center;
+    margin-left: 5px; /* Space between the logo image and text */
+}
+
+.company-name {
+    color: #e7c770; /* The gold color from your logo */
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.tagline {
+    color: #e7c770; /* White/Off-white for the tagline */
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-align: center; /* Centers the tagline under the main name */
+    margin-top: 2px;
 }
 
 .nav-links{
@@ -113,7 +135,7 @@ body{
 }
 
 /* HERO SECTION */
-.hero{
+ .hero{
     position:relative;
     height:100vh;
     width:100%;
@@ -179,6 +201,145 @@ body{
 .hero .hero-btn:hover,
 .hero button:hover{
     transform:scale(1.1);
+} */
+
+/* REFINED HERO SLIDER */
+.hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.slides {
+    display: flex;
+    width: 300%; 
+    height: 100%;
+    transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.slide {
+    width: 33.333%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.4) contrast(1.1);
+    transform: scale(1.1); /* Base scale for animation */
+    transition: transform 6s linear;
+}
+.hero-btn{
+    margin-top:30px;
+    padding:12px 30px;
+    border:none;
+    border-radius:30px;
+    background:linear-gradient(90deg,#00f2ff,#ff00c8);
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.4s;
+    text-decoration:none;
+    display:inline-block;
+}
+
+.hero .hero-btn:hover,
+.hero button:hover{
+    transform:scale(1.1);
+} 
+
+/* Ken Burns Effect: Zoom in slowly when the slide is active */
+#slide1:checked ~ .slides .s1 img,
+#slide2:checked ~ .slides .s2 img,
+#slide3:checked ~ .slides .s3 img {
+    transform: scale(1);
+}
+
+/* Slide Logic */
+#slide1:checked ~ .slides { transform: translateX(0); }
+#slide2:checked ~ .slides { transform: translateX(-33.333%); }
+#slide3:checked ~ .slides { transform: translateX(-66.666%); }
+
+/* Navigation Dots */
+.slider-nav {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+    z-index: 10;
+}
+
+.nav-dot {
+    width: 12px;
+    height: 12px;
+    border: 2px solid rgba(0, 242, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.nav-dot:hover {
+    border-color: #00f2ff;
+}
+
+#slide1:checked ~ .slider-nav label[for="slide1"],
+#slide2:checked ~ .slider-nav label[for="slide2"],
+#slide3:checked ~ .slider-nav label[for="slide3"] {
+    background: #00f2ff;
+    width: 35px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px #00f2ff;
+}
+
+/* Content Animations */
+.hero-content {
+    position: relative;
+    z-index: 5;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    margin-bottom: 10px;
+    animation: heroFade 1s ease-out;
+    background:linear-gradient(90deg,#00f2ff,#ff00c8);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    animation: heroFade 1.5s ease-out;
+}
+
+@keyframes heroFade {
+    from { opacity: 0; transform: translateY(20px); filter: blur(10px); }
+    to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+@media (max-width: 768px) {
+    .hero-content h1 { font-size: 2.5rem; }
+    .hero-content p { font-size: 1rem; }
 }
 
 /* SECTION */
@@ -238,183 +399,10 @@ body{
         width: 120px;
     }
 
-/* Responsive */
-@media(max-width:768px){
-    .navbar { 
-            padding: 10px 20px; /* Reduced padding to give more room */
-            justify-content: space-between;
-        }
 
-        /* Scale down the logo so it doesn't push the menu button away */
-        .logo img { 
-            width: 50px; 
-        }
-        .logo-text {
-            font-size: 0.8rem; /* Smaller text for mobile */
-        }
-
-        /* Ensure the 3-line menu (toggle) is visible and positioned right */
-        .menu-toggle { 
-            display: flex; 
-            z-index: 1001;
-        }
-
-        /* Fix navigation links overlay */
-        .nav-links {
-            position: fixed; /* Changed from absolute to fixed for better mobile stability */
-            top: 0; 
-            right: -100%; /* Start off-screen */
-            width: 80%; 
-            height: 100vh;
-            background: rgba(61, 59, 59, 0.95); 
-            flex-direction: column; 
-            align-items: center;
-            justify-content: center;
-            gap: 25px; 
-            padding: 30px 0; 
-            transition: 0.3s ease-in-out;
-            display: flex; /* Always flex, but moved off-screen */
-        }
-
-        .nav-links.active { 
-            right: 0; /* Slide in when active */
-        }
-        .projects-hero h1 {
-             font-size: 2.5rem; }
-        
-    .hero h1{
-        font-size:32px;
-    }
-    .hero p{
-        font-size: 1rem;
-        padding:0 20px;
-    }
-    .section{
-        padding:60px 5% !important;
-    }
-    /* about section stacks vertically */
-    #about > div{
-        flex-direction:column;
-        gap:30px;
-    }
-    #about img{
-        height:auto;
-        max-height:300px;
-    }
-    /* services cards full width */
-    .service-card{
-        min-width:100% !important;
-        margin-bottom:20px;
-    }
-    footer{
-        padding:60px 5% 30px;
-    }
-}
-
-</style>
-</head>
-
-<body>
-
-<nav class="navbar">
-    <a href="index.html" class="logo">
-        <img src="images/logo_img.png" alt="Logo">
-        <div class="logo-text">AGRIYIM<br>DEFENCE LLP</div>
-    </a>
-
-    <ul class="nav-links" id="navLinks">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="products.html">Products & Services</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="career.html">Career</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
-    </ul>
-
-    <div class="menu-toggle" onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-</nav>
-
-<!-- HERO WITH BACKGROUND VIDEO -->
-<section class="hero">
-    <!-- <video autoplay muted loop>
-        <source src="images/background-video.mp4" type="video/mp4">
-    </video> -->
-    <img src="images/b1.jpg" alt="Hero Background" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:-1;">
-    <div class="hero-content">
-        <h1>Innovating Defence Technology</h1>
-        <p>Advanced Security Solutions • Strategic Engineering • Future Ready Systems</p>
-        <a href="products.html" class="hero-btn">Explore More</a>
-    </div>
-</section>
-
-<section class="section" id="about" style="background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); color: white;">
-    <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:60px;">
-        <div style="flex:1; min-width:320px; position: relative;">
-            <img src="images/about.jpg" alt="About Image" class="animated-img" 
-                 style="height:450px; width:100%; object-fit: cover; border-radius:30px; box-shadow:0 25px 50px rgba(0,0,0,0.6);">
-        </div>
-        <div style="flex:1; min-width:320px; text-align:left;">
-            <h2 class="section-title" style="font-size:42px; margin-bottom:25px; letter-spacing: 1px;">About Agriyim Defence LLP</h2>
-            <p style="line-height:1.8; color:#cbd5e1; margin-bottom:20px; font-size: 17px;">
-                Agriyim Defence LLP is committed to delivering <strong>next-generation</strong> defence technologies and advanced security systems. 
-                Our organization focuses on research-driven innovation, precision engineering, and mission-critical reliability.
-            </p>
-            <p style="line-height:1.8; color:#94a3b8; font-size: 17px;">
-                With a strong foundation in strategic defence solutions, we integrate cutting-edge technology with operational excellence 
-                to support national security and global defence modernization initiatives.
-            </p>
-        </div>
-    </div>
-</section>
-
-<section class="section" style=" background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); text-align: center; border-top: 1px solid rgba(255,255,255,0.05);">
-    <div style="max-width: 1000px; margin: auto;">
-        <h2 class="section-title" style="display: inline-block; margin-bottom: 20px;">Our Mission</h2>
-        <p style="line-height:1.9; color:#cbd5e1; font-size: 18px; margin-bottom: 50px; font-style: italic;">
-            "To design and develop innovative, secure, and future-ready defence systems that enhance operational capability, safety, 
-            and technological advancement for strategic forces."
-        </p>
-
-        <h2 class="section-title" style="display: inline-block; margin-bottom: 20px;">Our Vision</h2>
-        <p style="line-height:1.9; color:#cbd5e1; font-size: 18px;">
-            "To become a globally recognized leader in defence innovation by delivering excellence, integrity, and sustainable 
-            technological growth."
-        </p>
-    </div>
-</section>
-
-<section class="section" id="services" style=" background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);">
-    <h2 class="section-title" style="display: inline-block; margin-bottom: 50px;">Core Capabilities</h2>
-    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:30px;">
-        
-        <div class="service-card" style="flex:1; min-width:280px; background:rgba(255,255,255,0.03); padding:40px 30px; border-radius:24px; backdrop-filter:blur(12px);">
-            <div style="font-size: 40px; margin-bottom: 20px;">⚙️</div>
-            <h3 style="margin-bottom:15px; color: #fff;">Advanced Engineering</h3>
-            <p style="color:#94a3b8; line-height: 1.6;">High-performance defence components designed with surgical precision and battlefield reliability.</p>
-        </div>
-
-        <div class="service-card" style="flex:1; min-width:280px; background:rgba(255,255,255,0.03); padding:40px 30px; border-radius:24px; backdrop-filter:blur(12px);">
-            <div style="font-size: 40px; margin-bottom: 20px;">🛡️</div>
-            <h3 style="margin-bottom:15px; color: #fff;">Strategic Systems</h3>
-            <p style="color:#94a3b8; line-height: 1.6;">Integrated tactical solutions supporting real-time surveillance, protection, and mission logistics.</p>
-        </div>
-
-        <div class="service-card" style="flex:1; min-width:280px; background:rgba(255,255,255,0.03); padding:40px 30px; border-radius:24px; backdrop-filter:blur(12px);">
-            <div style="font-size: 40px; margin-bottom: 20px;">🚀</div>
-            <h3 style="margin-bottom:15px; color: #fff;">Research & Innovation</h3>
-            <p style="color:#94a3b8; line-height: 1.6;">Pioneering R&D initiatives focused on AI-driven defense and next-gen material science.</p>
-        </div>
-
-    </div>
-</section>
-<style>
     /* FOOTER STYLING */
     footer {
-        background: rgba(0, 0, 0, 0.8);
+        background-color: rgba(0, 0, 0, 0.9); 
         backdrop-filter: blur(15px);
         padding: 80px 10% 30px;
         border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -524,14 +512,218 @@ body{
         .footer-container { grid-template-columns: 1fr; }
         footer { padding: 60px 5% 30px; }
     }
+
+/* Responsive */
+@media(max-width:768px){
+    .navbar { 
+            padding: 10px 20px; /* Reduced padding to give more room */
+            justify-content: space-between;
+        }
+
+        /* Scale down the logo so it doesn't push the menu button away */
+        .logo img { 
+            width: 50px; 
+        }
+        
+        .company-name {
+            font-size: 1rem;
+        }
+        .tagline {
+            font-size: 0.6rem;
+        }
+
+        /* Ensure the 3-line menu (toggle) is visible and positioned right */
+        .menu-toggle { 
+            display: flex; 
+            z-index: 1001;
+        }
+
+        /* Fix navigation links overlay */
+        .nav-links {
+            position: fixed; /* Changed from absolute to fixed for better mobile stability */
+            top: 0; 
+            right: -100%; /* Start off-screen */
+            width: 80%; 
+            height: 100vh;
+            background: rgba(61, 59, 59, 0.95); 
+            flex-direction: column; 
+            align-items: center;
+            justify-content: center;
+            gap: 25px; 
+            padding: 30px 0; 
+            transition: 0.3s ease-in-out;
+            display: flex; /* Always flex, but moved off-screen */
+        }
+
+        .nav-links.active { 
+            right: 0; /* Slide in when active */
+        }
+        .projects-hero h1 {
+             font-size: 2.5rem; }
+        
+    .hero h1{
+        font-size:32px;
+    }
+    .hero p{
+        font-size: 1rem;
+        padding:0 20px;
+    }
+    .section{
+        padding:60px 5% !important;
+    }
+    /* about section stacks vertically */
+    #about > div{
+        flex-direction:column;
+        gap:30px;
+    }
+    #about img{
+        height:auto;
+        max-height:300px;
+    }
+    /* services cards full width */
+    .service-card{
+        min-width:100% !important;
+        margin-bottom:20px;
+    }
+    footer{
+        padding:60px 5% 30px;
+    }
+}
+
 </style>
+</head>
+
+<body>
+
+<nav class="navbar">
+    <a href="index.html" class="logo">
+        <img src="images/logo_image.jpeg" alt="Logo">
+        <div class="logo-text">
+            <span class="company-name">AGRIYIM DEFENCE</span>
+            <span class="tagline">Silent Agile Swift</span>
+        </div>
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="products.html">Products & Services</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="career.html">Career</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+
+    <div class="menu-toggle" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</nav>
+
+<!-- HERO WITH BACKGROUND VIDEO -->
+<section class="hero">
+    <div class="slider-container">
+        <input type="radio" name="slider" id="slide1" checked>
+        <input type="radio" name="slider" id="slide2">
+        <input type="radio" name="slider" id="slide3">
+
+        <div class="slides">
+            <div class="slide s1">
+                <img src="images/b1.jpg" alt="Strategic Defence">
+            </div>
+            <div class="slide s2">
+                <img src="images/b2.jpg" alt="Unmanned Systems">
+            </div>
+            <div class="slide s3">
+                <img src="images/b3.jpg" alt="Maritime Security">
+            </div>
+        </div>
+
+        <div class="slider-nav">
+            <label for="slide1" class="nav-dot"></label>
+            <label for="slide2" class="nav-dot"></label>
+            <label for="slide3" class="nav-dot"></label>
+        </div>
+    </div>
+
+    <div class="hero-content">
+        <h1>Innovating Defence Technology</h1>
+        <p>Advanced Security Solutions • Strategic Engineering • Future Ready Systems</p>
+        <a href="products.html" class="hero-btn">Explore More</a>
+    </div>
+</section>
+
+<section class="section" id="about" style="background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); color: white;">
+    <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:60px;">
+        <div style="flex:1; min-width:320px; position: relative;">
+            <img src="images/about.jpg" alt="About Image" class="animated-img" 
+                 style="height:450px; width:100%; object-fit: cover; border-radius:30px; box-shadow:0 25px 50px rgba(0,0,0,0.6);">
+        </div>
+        <div style="flex:1; min-width:320px; text-align:left;">
+            <h2 class="section-title" style="font-size:42px; margin-bottom:25px; letter-spacing: 1px;">About Agriyim Defence LLP</h2>
+            <p style="line-height:1.8; color:#cbd5e1; margin-bottom:20px; font-size: 17px;">
+                Agriyim Defence LLP is committed to delivering <strong>next-generation</strong> defence technologies and advanced security systems. 
+                Our organization focuses on research-driven innovation, precision engineering, and mission-critical reliability.
+            </p>
+            <p style="line-height:1.8; color:#94a3b8; font-size: 17px;">
+                With a strong foundation in strategic defence solutions, we integrate cutting-edge technology with operational excellence 
+                to support national security and global defence modernization initiatives.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="section" style=" background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); text-align: center; border-top: 1px solid rgba(255,255,255,0.05);">
+    <div style="max-width: 1000px; margin: auto;">
+        <h2 class="section-title" style="display: inline-block; margin-bottom: 20px;">Our Mission</h2>
+        <p style="line-height:1.9; color:#cbd5e1; font-size: 18px; margin-bottom: 50px; font-style: italic;">
+            "To design and develop innovative, secure, and future-ready defence systems that enhance operational capability, safety, 
+            and technological advancement for strategic forces."
+        </p>
+
+        <h2 class="section-title" style="display: inline-block; margin-bottom: 20px;">Our Vision</h2>
+        <p style="line-height:1.9; color:#cbd5e1; font-size: 18px;">
+            "To become a globally recognized leader in defence innovation by delivering excellence, integrity, and sustainable 
+            technological growth."
+        </p>
+    </div>
+</section>
+
+<section class="section" id="services" style=" background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);">
+    <h2 class="section-title" style="display: inline-block; margin-bottom: 50px;">Core Capabilities</h2>
+    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:30px;">
+        
+        <div class="service-card" style="flex:1; min-width:280px; background:rgba(255,255,255,0.03); padding:40px 30px; border-radius:24px; backdrop-filter:blur(12px);">
+            <div style="font-size: 40px; margin-bottom: 20px;">⚙️</div>
+            <h3 style="margin-bottom:15px; color: #fff;">Advanced Engineering</h3>
+            <p style="color:#94a3b8; line-height: 1.6;">High-performance defence components designed with surgical precision and battlefield reliability.</p>
+        </div>
+
+        <div class="service-card" style="flex:1; min-width:280px; background:rgba(255,255,255,0.03); padding:40px 30px; border-radius:24px; backdrop-filter:blur(12px);">
+            <div style="font-size: 40px; margin-bottom: 20px;">🛡️</div>
+            <h3 style="margin-bottom:15px; color: #fff;">Strategic Systems</h3>
+            <p style="color:#94a3b8; line-height: 1.6;">Integrated tactical solutions supporting real-time surveillance, protection, and mission logistics.</p>
+        </div>
+
+        <div class="service-card" style="flex:1; min-width:280px; background:rgba(255,255,255,0.03); padding:40px 30px; border-radius:24px; backdrop-filter:blur(12px);">
+            <div style="font-size: 40px; margin-bottom: 20px;">🚀</div>
+            <h3 style="margin-bottom:15px; color: #fff;">Research & Innovation</h3>
+            <p style="color:#94a3b8; line-height: 1.6;">Pioneering R&D initiatives focused on AI-driven defense and next-gen material science.</p>
+        </div>
+
+    </div>
+</section>
+
 
 <footer>
     <div class="footer-container">
         <div class="footer-col" data-aos="fade-up">
             <div class="logo" style="margin-bottom: 20px;">
-                <img src="images/logo_img.png" alt="Logo" style="width: 70px;">
-                <div class="logo-text" style="color: white; font-weight: 600;">AGRIYIM<br>DEFENCE LLP</div>
+                <img src="images/logo_image.jpeg" alt="Logo" style="width: 70px;">
+                <div class="logo-text">
+                    <span class="company-name">AGRIYIM DEFENCE</span>
+                    <span class="tagline">Silent Agile Swift</span>
+                </div>
             </div>
             <p>Bridging the gap between operational needs and indigenous manufacturing execution. Pioneering the next generation of RIBs and Unmanned Systems for a secure nation.</p>
         </div>
@@ -551,8 +743,9 @@ body{
         <div class="footer-col" data-aos="fade-up" data-aos-delay="200">
             <h3>Contact</h3>
             <ul class="footer-links">
-                <li><a href="mailto:info@agriyim.com">info@agriyim.com</a></li>
-                <li style="color: #ccc;">+91-XXXXXXXXXX</li>
+                <li><a href="mailto:info@agriyimdefence.com">info@agriyimdefence.com</a></li>
+                <li style="color: #ccc;">+91-8086493469</li>
+                <li style="color: #ccc;">+91-9020892464</li>
                 <li style="color: #ccc;">India</li>
             </ul>
         </div>
@@ -578,6 +771,24 @@ body{
 function toggleMenu(){
     document.getElementById("navLinks").classList.toggle("active");
 }
+
+let counter = 1;
+let autoSlider = setInterval(slideTimer, 5000);
+
+function slideTimer() {
+    counter++;
+    if (counter > 3) counter = 1;
+    document.getElementById('slide' + counter).checked = true;
+}
+
+// Manual Override & Timer Reset
+document.querySelectorAll('.nav-dot').forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+        clearInterval(autoSlider); // Stop current timer
+        counter = index + 1;
+        autoSlider = setInterval(slideTimer, 5000); // Restart timer
+    });
+});
 </script>
 
 </body>
