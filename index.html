@@ -6,7 +6,7 @@
 <title>Agriyim Defence LLP</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
 *{
     margin:0;
@@ -21,7 +21,7 @@ body{
     color:white;
     overflow-x:hidden;
     line-height: 1.6;
-
+    margin-top: 20px;
 }
 
 /* NAVBAR */
@@ -500,9 +500,118 @@ body{
         text-align: center;
         padding-top: 30px;
         border-top: 1px solid rgba(255, 255, 255, 0.05);
-        color: #777;
+        color: #fff;
         font-size: 0.8rem;
     }
+     @media (max-width: 768px) {
+        .footer-bottom {
+            flex-direction: column !important;
+            align-items: center !important;
+            text-align: center !important;
+            gap: 10px !important;
+        }
+        .footer-bottom > * {
+            width: 100% !important;
+            margin: 0 !important;
+            text-align: center !important;
+        }
+    }
+
+    /* Scroll to Top Button */
+#scrollTopBtn {
+    display: none; /* Hidden by default */
+    position: fixed;
+    bottom: 20px; /* Positioned above the WhatsApp toggle */
+    right: 30px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background: linear-gradient(90deg, #00f2ff, #ff00c8);
+    color: white;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 20px;
+    transition: 0.3s;
+    box-shadow: 0 0 15px rgba(0, 242, 255, 0.4);
+}
+
+#scrollTopBtn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px #00f2ff;
+}
+
+@media (max-width: 768px) {
+    #scrollTopBtn {
+        right: 20px;
+        bottom: 85px; /* Adjust for mobile WhatsApp button */
+        width: 40px;
+        height: 40px;
+    }
+}
+
+    /* WhatsApp Toggle Styling */
+.whatsapp-toggle {
+    position: fixed;
+    bottom: 80px;
+    right: 25px;
+    background-color: #25d366;
+    color: #ffffff !important; /* Forces the icon to be white */
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px; /* Adjust size of the icon */
+    z-index: 1000;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+
+.whatsapp-toggle i {
+    line-height: 60px; /* Matches the height of the button */
+}
+
+.whatsapp-toggle:hover {
+    transform: scale(1.1);
+    background-color: #128c7e;
+    box-shadow: 0 0 20px #25d366;
+}
+
+/* Optional text label that appears on hover */
+.toggle-text {
+    position: absolute;
+    right: 70px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: 0.3s;
+    pointer-events: none;
+}
+
+.whatsapp-toggle:hover .toggle-text {
+    opacity: 1;
+    right: 80px;
+}
+
+@media (max-width: 768px) {
+    .whatsapp-toggle {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 25px;
+    }
+    .toggle-text {
+        display: none; /* Hide text on mobile for cleaner UI */
+    }
+}
 
     @media (max-width: 992px) {
         .footer-container { grid-template-columns: 1fr 1fr; }
@@ -762,10 +871,25 @@ body{
         </div>
     </div>
 
-    <div class="footer-bottom">
-        &copy; 2026 AGRIYIM DEFENCE LLP. All Rights Reserved. Designed for Tactical Excellence.
-    </div>
-</footer>
+    
+        <div class="footer-bottom" style="display:flex; align-items:center; justify-content:space-between; gap: 20px; flex-wrap:wrap; width:100%;">
+            <div class="social" style="text-align:left; flex:1; min-width:200px;">
+                <p style="margin:0; font-size:0.9rem;">Website Developed by <a href="https://violavizn.com/" style="color: #26a0da; text-decoration:none;">violavizn</a></p>
+            </div>
+            <div class="copyright" style="flex:1; min-width:200px; text-align:center; font-size:0.9rem;">
+                2026 AGRIYIM DEFENCE LLP. All Rights Reserved.
+            </div>
+            <div style="flex:1; min-width:200px;"></div>
+        </div>
+        
+    </footer>
+            <button onclick="scrollToTop()" id="scrollTopBtn" title="Go to top">
+                <i class="fas fa-arrow-up"></i>
+            </button>
+        <a href="https://wa.me/918086493469" class="whatsapp-toggle" target="_blank" aria-label="Chat on WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span class="toggle-text">Chat with us</span>
+        </a>
 
 <script>
 function toggleMenu(){
@@ -789,6 +913,31 @@ document.querySelectorAll('.nav-dot').forEach((dot, index) => {
         autoSlider = setInterval(slideTimer, 5000); // Restart timer
     });
 });
+</script>
+<script>
+    // Get the button
+let mybutton = document.getElementById("scrollTopBtn");
+
+// When the user scrolls down 300px from the top, show the button
+window.onscroll = function() {
+    scrollFunction();
+};
+
+function scrollFunction() {
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        mybutton.style.display = "block";
+    } else {
+        mybutton.style.display = "none";
+    }
+}
+
+// Smooth scroll to top function
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
 </script>
 
 </body>
