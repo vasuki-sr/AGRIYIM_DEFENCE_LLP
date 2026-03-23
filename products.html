@@ -299,7 +299,25 @@ body{
     /* Pause on hover */
     .strip:hover {
         animation-play-state: paused;
-    }
+    }   
+
+
+    .card-icon-header {
+    width: 60px;
+    height: 60px;
+    background: rgba(0, 242, 255, 0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    border: 1px solid rgba(0, 242, 255, 0.3);
+}
+
+.card-icon-header i {
+    font-size: 1.8rem;
+    color: #00f2ff;
+}
         @media(max-width:768px){
             .navbar { 
             padding: 10px 20px; /* Reduced padding to give more room */
@@ -379,54 +397,145 @@ body{
 </nav>
 
 <section class="products-hero" data-aos="zoom-in">
-    
     <h1>Our Solutions</h1>
-    <p>Delivering mission-ready platforms and indigenous technologies designed for the most demanding maritime and tactical environments.
-    </p>
+    <p>Engineering the essential technology for the <strong>Digital Ocean</strong>—where autonomous robotics, real-time connectivity, and indigenous marine engineering converge.</p>
 </section>
 
 <main class="container">
-    
-    <h2 class="product-section-title" data-aos="fade-right">Maritime Platforms</h2>
+    <h2 class="product-section-title" data-aos="fade-right">
+        <i class="fas fa-ship"></i> Unmanned Surface Vehicles (USVs)
+    </h2>
+
     <div class="product-grid">
         <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="card-icon-header">
+                <i class="fas fa-anchor"></i>
+            </div>
             <div>
-                <h3>Rigid Inflatable Boats (RIBs)</h3>
-                <p>High-performance, multi-mission vessels designed for speed, stability, and extreme durability.</p>
+                <h3>Autonomous Patrol USV</h3>
+                <p>
+                    The flagship of our <strong>Digital Ocean</strong> initiative. These unmanned vessels are designed for persistent maritime surveillance, providing a continuous presence without risking human lives in high-threat or extreme weather environments.
+                </p>
                 <ul class="feature-list">
-                    <li>Reinforced Composite Hulls</li>
-                    <li>Shock-mitigating Seating</li>
-                    <li>Tactical Equipment Mounts</li>
-                    <li>High-Speed Interception Capability</li>
+                    <li>Indigenous Navigation: Fully autonomous waypoint following and obstacle avoidance.</li>
+                    <li>Long Endurance: Optimized power management for multi-day mission persistence.</li>
+                    <li>Modular Payload: Integration for sonar, radar, and 360° optical surveillance.</li>
+                    <li>Real-Time Telemetry: Encrypted satellite and RF links for remote command.</li>
                 </ul>
             </div>
         </div>
 
         <div class="product-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="card-icon-header">
+                <i class="fas fa-network-wired"></i>
+            </div>
             <div>
-                <h3>Specialized Patrol Craft</h3>
-                <p>Custom-built platforms for coastal surveillance, search and rescue, and border security operations.</p>
+                <h3>USV Swarm Operations</h3>
+                <p>
+                    Advanced coordinated control systems that allow multiple Unmanned Surface Vehicles to work in unison. Perfect for large-scale area denial, perimeter security, and complex search operations.
+                </p>
                 <ul class="feature-list">
-                    <li>Indigenously Manufactured</li>
-                    <li>Ruggedized Material Build</li>
-                    <li>Low Maintenance Design</li>
-                    <li>Optimized for Indian Waters</li>
+                    <li>Collaborative Intelligence: Vehicles share sensor data for a unified battle picture.</li>
+                    <li>Scalable Deployment: Control a fleet of USVs from a single ground station.</li>
+                    <li>Dynamic Tasking: Automatically redistributes tasks if a unit leaves the swarm.</li>
+                    <li>Tactical Superiority: Overwhelms traditional surveillance with multi-angle coverage.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="product-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="card-icon-header">
+                <i class="fas fa-satellite-dish"></i>
+            </div>
+            <div>
+                <h3>Subsea Data Gateway</h3>
+                <p>
+                    A specialized USV variant acting as a <strong>communication bridge</strong> between underwater assets (AUVs/Sensors) and global satellite networks, bridging the gap between subsea data and execution.
+                </p>
+                <ul class="feature-list">
+                    <li>Acoustic-to-RF Conversion: Transmits subsea sensor data to the cloud in real-time.</li>
+                    <li>Ruggedized Station Keeping: Maintains position in heavy seas for reliable link-up.</li>
+                    <li>Low Signature: Stealth-oriented design to minimize detection during data relay.</li>
+                    <li>Solar-Electric Hybrid: Maximizes mission life through renewable energy harvesting.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <h2 class="product-section-title" data-aos="fade-right">
+        <i class="fas fa-microchip"></i> Unmanned Drone Systems
+    </h2>
+
+    <div class="product-grid">
+        <div class="product-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="card-icon-header">
+                <i class="fas fa-eye"></i>
+            </div>
+            
+            <div>
+                <h3>Tactical ISR Drone Systems</h3>
+                <p>
+                    Indigenously manufactured aerial solutions designed for <strong>Intelligence, Surveillance, and Reconnaissance</strong>. 
+                    These systems are custom-built to bridge the gap between operational needs and tactical execution in volatile coastal and border environments.
+                </p>
+                <ul class="feature-list">
+                    <li>Mission-Ready: Rapid deployment for immediate situational awareness.</li>
+                    <li>Reliable: Engineered for extreme maritime and operational conditions.</li>
+                    <li>Advanced EO/IR payloads for day and night surveillance.</li>
+                    <li>Encrypted data telemetry aligned with national security benchmarks.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="product-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="card-icon-header">
+                <i class="fas fa-box-open"></i>
+            </div>
+            <div>
+                <h3>Tactical Logistics Drones</h3>
+                <p>
+                    Specialized heavy-lift platforms designed for <strong>autonomous logistics and supply missions</strong>. 
+                    These systems support the "Digital Ocean" vision by providing cost-effective, unmanned transport to remote maritime locations.
+                </p>
+                <ul class="feature-list">
+                    <li>Heavy payload capacity for mission-critical cargo.</li>
+                    <li>Cost-Effective: Reduces reliance on expensive manned transport.</li>
+                    <li>Precision autonomous landing on moving maritime platforms.</li>
+                    <li>Fail-safe systems for high-reliability logistics.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="product-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="card-icon-header">
+                <i class="fas fa-tools"></i>
+            </div>
+            <div>
+                <h3>Bespoke UAS Engineering</h3>
+                <p>
+                    We provide <strong>application-specific solutions</strong> rather than off-the-shelf products. 
+                    Our team integrates unmanned technologies with national requirements to build drones tailored for specific security and rescue profiles.
+                </p>
+                <ul class="feature-list">
+                    <li>Custom-built payloads based on institutional requirements.</li>
+                    <li>Indigenous AI integration for autonomous pathfinding.</li>
+                    <li>Seamless integration with existing maritime command systems.</li>
+                    <li>Designed for technology-driven defense preparedness.</li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <h2 class="product-section-title" data-aos="fade-right">Unmanned Systems & Technology</h2>
+    <h2 class="product-section-title" data-aos="fade-right">Intelligent Maritime Platforms</h2>
     <div class="product-grid">
         <div class="product-card" data-aos="fade-up" data-aos-delay="100">
             <div>
-                <h3>Tactical Drone Systems</h3>
-                <p>Indigenous Unmanned Aerial Systems (UAS) for persistent surveillance and tactical intelligence gathering.</p>
+                <h3>Smart RIBs (Rigid Inflatable Boats)</h3>
+                <p>High-speed, multi-mission vessels engineered as the physical backbone for advanced sensor arrays and tactical operations.</p>
                 <ul class="feature-list">
-                    <li>Autonomous Waypoint Navigation</li>
-                    <li>Encrypted Data Link</li>
-                    <li>Night-Vision/Thermal Integration</li>
-                    <li>Compact & Rapid Deployment</li>
+                    <li>Reinforced Stealth-Profile Hulls</li>
+                    <li>Shock-Mitigating Command Seating</li>
+                    <li>Integrated Communication Mast</li>
+                    <li>High-Speed Tactical Interception</li>
                 </ul>
             </div>
         </div>
@@ -434,12 +543,12 @@ body{
         <div class="product-card" data-aos="fade-up" data-aos-delay="200">
             <div>
                 <h3>Integrated Monitoring Units</h3>
-                <p>Sensor-rich hardware for real-time telemetry, environmental tracking, and situational awareness.</p>
+                <p>IoT-enabled hardware for real-time telemetry and situational awareness across the maritime battlespace.</p>
                 <ul class="feature-list">
-                    <li>Real-time Data Analytics</li>
-                    <li>IoT Cloud Integration</li>
-                    <li>Ruggedized Enclosures</li>
-                    <li>Multi-Sensor Support</li>
+                    <li>Cloud-Based Data Analytics</li>
+                    <li>Ruggedized Marine Enclosures</li>
+                    <li>Multi-Sensor Fusion Support</li>
+                    <li>Low-Latency Connectivity</li>
                 </ul>
             </div>
         </div>
@@ -475,14 +584,14 @@ body{
             </div>
 
             <div class="strip layer2">
-                <img src="images/9.jpg" alt="Drone team" />
-                <img src="images/10.jpg" alt="Naval platform" />
-                <img src="images/11.jpg" alt="High-speed craft" />
-                <img src="images/12.webp" alt="Drone team" />
-                <img src="images/13.jpg" alt="Drone team" />
-                <img src="images/14.jpg" alt="Naval platform" />
-                <img src="images/15.jpg" alt="High-speed craft" />
-                <img src="images/16.jpg" alt="Drone team" />
+                <img src="images/drone1.jpg" alt="Drone team" />
+                <img src="images/drone2.jpg" alt="Naval platform" />
+                <img src="images/drone3.jpg" alt="High-speed craft" />
+                <img src="images/drone4.jpg" alt="Drone team" />
+                <img src="images/drone1.jpg" alt="Drone team" />
+                <img src="images/drone2.jpg" alt="Naval platform" />
+                <img src="images/drone3.jpg" alt="High-speed craft" />
+                <img src="images/drone4.jpg" alt="Drone team" />
             </div>
         </div>
     </section>
@@ -727,7 +836,7 @@ body{
                     <span class="tagline">Silent Agile Swift</span>
                 </div>
             </div>
-            <p>Bridging the gap between operational needs and indigenous manufacturing execution. Pioneering the next generation of RIBs and Unmanned Systems for a secure nation.</p>
+            <p>Pioneering the <strong>Digital Ocean</strong> by bridging the gap between subsea data and global networks. We design and manufacture the USVs and intelligent platforms that save time, money, and human lives.</p>
         </div>
 
         <div class="footer-col" data-aos="fade-up" data-aos-delay="100">
